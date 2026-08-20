@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        .img {
+            width: 300px;
+            height: 250px;
+            border-radius: 8px;
+
+            position: absolute;
+            top: 16px;
+            left: 16px;
+
+            background-image: url(assets/17img.jpg);
+            background-size: 338px 450px;   /* 배경 이미지 자체의 크기를 338*450으로 인식하도록 */
+            background-position: -38px -87px;
+            background-repeat: no-repeat;
+        }
+
+        .circle {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #D9D9D9;
+
+            position: absolute;
+            top: 16px;
+            left: 260px;
+        }
+
+        .black {
+            width: 300px;
+            height: 56px;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            background: #000000;
+            opacity: 60%;
+
+            position: absolute;
+            top: 194px;
+        }
+
+        .new, .writer {
+            font-weight: 700;
+            font-size: 12px;
+            position: absolute;
+            left: 8px;
+            
+            display: flex;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .new {
+            width: 62px;
+            height: 15px;
+            color: #FFFFFF;
+            top: 8px;
+
+            white-space: nowrap;   /* 글자의 줄바꿈이 되지 않도록 강제설정 */
+        }
+
+        .writer {
+            width: 34px;
+            height: 15px;
+            color: #d1d1d1;
+            top: 33px;
+        }
+    </style>
+
+    <div class="img">
+        <div class="circle"></div>
+        <div class="black">
+            <div class="new">새로운 시작!</div>
+            <div class="writer">김작가</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+      .item {
+        background: lightblue;
+        padding: 10px;
+        margin: 5px;
+        border: 1px solid blue;
+      }
+      .container {
+        border: 2px solid black;
+        padding: 15px;
+        margin: 10px;
+      }
+    </style>
+
+    <script>
+        function one() {
+            const target = document.querySelector('.one');
+            target.remove();
+        }
+
+        function two() {
+            const target = document.querySelector('.two');
+            target.remove();
+        }
+
+        function three() {
+            const target = document.querySelector('.three');
+            target.remove();
+        }
+
+        function last() {
+            const target = document.querySelector('.last');
+            target.remove();
+        }
+    </script>
+
+    <div class="container">
+        <div class="item one">삭제할 항목 1</div>
+        <div class="item two">삭제할 항목 2</div>
+        <div class="item three">삭제할 항목 3</div>
+        <div class="item last">삭제할 항목 4</div>
+    </div>
+
+    <button onclick="one();">첫 번째 삭제</button>
+    <button onclick="two();">두 번째 삭제</button>
+    <button onclick="three();">세 번째 삭제</button>
+    <button onclick="last();">마지막 삭제</button>
+</body>
+</html>

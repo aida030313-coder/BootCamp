@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <h1>미션</h1>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        function App() {
+            return (
+                <>
+                    {/* 미션1) 아래와 같이 컴포넌트를 호출할 때 전달한 color를 배경색으로 가지도록 컴포넌트를 구현하세요. 박스크기(100*100) */}
+                    <ColorBox color={"red"} />
+                    <ColorBox color={"green"} />
+
+                    {/* 미션2) 아래와 같이 컴포넌트를 호출할 때 전달한 data를 리스트 형태로 출력하도록 컴포넌트를 구현하세요. */}
+                    <Items data={["봄", "여름", "가을", "겨울"]} />
+                    <Items data={["김치찌개", "된장찌개"]} />
+
+                    {/* 미션3) 아래와 같이 컴포넌트를 호출할 때 전달한 friend 객체의 속성값을 출력하도록 컴포넌트를 구현하세요. */}
+                    <Person friend={{ name: "jack", age: 20 }} />
+                    <Person friend={{ name: "john", age: 30 }} />
+
+                    {/* 미션4) 아래와 같이 컴포넌트를 호출할 때 내부 요소로 전달한 값을 정사각형의 너비로 계산하여 정사각형의 넓이를 출력하는 컴포넌트를 구현하세요. */}
+                    <Square>5</Square>
+                    <Square>10</Square>
+                </>
+            );
+        }
+
+        // 각 미션에 해당하는 컴포넌트들 만들어보기
+        
+        const ColorBox = ({color}) => {
+            const style = {
+                width: '100px',
+                height: '100px',
+                backgroundColor: color
+            };
+            return <div style={style}></div>
+        }
+
+        const Items = ({data}) => {
+            return <ul> {
+                data.map((item, index) => <li key={index}>{item}</li>)
+            } </ul>;
+        }
+
+        const Person = ({friend}) => {
+            return <h3> 이름: {friend.name}, 나이: {friend.age} </h3>;
+        }
+
+        const Square = ({children}) => {
+            const quarter = Number(children);
+            return <h3> 넓이: {quarter ** 2}</h3>
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area {
+            width: 100px;
+            height: 100px;
+            border: 3px solid lightblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>04. CSS 선택자를 이용한 요소 노드 취득</h1>
+    <pre>
+        <b>Document.prototype/Element.prototype.querySelector 메서드는
+            인수로 전달한 CSS 선택자를 만족시키는 하나의 요소 노드를 탐색하여 반환한다.
+        </b>
+    </pre>
+
+    <div class="area">
+        <p>first</p>
+    </div>
+    <div class="area">
+        <p>second</p>
+    </div>
+
+    <script>
+        // Document.prototype.querySelector
+        // DOM 전체에서 class 어트리뷰트 값이 area인 첫 번째 요소 노트를 탐색하여 반환
+        const $area = document.querySelector('.area');
+        console.log($area);
+
+        $area.style.backgroundColor = 'blue';
+
+
+        // Element.prototype.querySelector
+        const $first = document.querySelector('p');
+        console.log($first);
+
+        $first.style.color = 'white';
+
+        const $noElement = document.querySelector('.noElement');
+        console.log($noElement);   // null
+    </script>
+
+    <pre>
+        <b>Document.prototype/Element.prototype.querySelectorAll 메서드는
+           인수로 전달한 CSS선택자를 만족시키는 모든 요소 노드를 탐색하여 반환한다.
+           여러 개의 요소 노드 객체를 갖는 DOM 컬렉션 객체인 NodeList 객체를 반환한다.
+        </b>
+    </pre>
+
+    <ul id="list">
+        <li class="drink">커피</li>
+        <li class="drink">콜라</li>
+        <li class="food">김치찌개</li>
+        <li class="food">된장찌개</li>
+    </ul>
+
+    <script>
+        const $list = document.querySelectorAll('ul > li');
+        console.log($list);
+
+        [...$list].forEach(list => list.style.color = 'gray');
+
+
+        const $foodList = document.getElementById('list').querySelectorAll('.food');
+        console.log($foodList);
+
+        
+        [...$foodList].forEach(list => list.style.color = 'red');
+
+        const $noElement2 = document.querySelectorAll('.noElement');
+        console.log($noElement2);   // NodeList[]
+    </script>
+</body>
+</html>

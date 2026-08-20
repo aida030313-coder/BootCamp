@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+      .container {
+        border: 2px solid #333;
+        margin: 10px;
+        padding: 10px;
+        background-color: #f9f9f9;
+      }
+      .target {
+        border: 2px solid blue;
+        padding: 10px;
+        margin: 5px;
+        background-color: white;
+      }
+      .highlight {
+        background-color: yellow;
+        border: 1px solid red;
+        padding: 3px;
+        margin: 2px;
+      }
+      button {
+        margin: 5px;
+        padding: 5px 10px;
+      }
+    </style>
+
+    <script>
+        function yellow() {
+            const target = document.querySelector('.target');
+
+            const $div = document.createElement('div');
+            $div.className = 'highlight';
+            $div.innerText = 'before()로 추가된 요소';
+
+            target.before($div);
+        }
+
+        function yellow2() {
+            const target = document.querySelector('.target');
+
+            const $div = document.createElement('div');
+            $div.className = 'highlight';
+            $div.innerText = 'after()로 추가된 요소';
+
+            target.after($div);
+        }
+
+        function yellow3() {
+            const target = document.querySelector('.target');
+
+            const $div = document.createElement('div');
+            $div.className = 'highlight';
+            $div.innerText = 'prepend()로 추가된 요소';
+
+            target.prepend($div);
+        }
+
+        function yellow4() {   // append(최신형)
+            const target = document.querySelector('.target');
+
+            const $div = document.createElement('div');
+            $div.className = 'highlight';
+            $div.innerText = 'append()로 추가된 요소';
+
+            target.append($div);
+        }
+
+        function yellow5() {   // appendChild(Node만 가능)
+            const target = document.querySelector('.target');
+
+            const $div = document.createElement('div');
+            $div.className = 'highlight';
+            $div.innerText = 'appendChild()로 추가된 요소';
+
+            target.appendChild($div);
+        }
+
+        function onetwothree() {
+            const target = document.querySelector('.target');
+
+            target.prepend('123 ');
+            target.append(' append()로 추가된 문자열');
+        }
+    </script>
+
+    <div class="container" id="box">
+        <div class="target">기존 자식1 기존 자식2</div>
+        <p>다른 형제 요소</p>
+    </div>
+    <button onclick="yellow();">before() 테스트</button>
+    <button onclick="yellow2();">after() 테스트</button>
+    <button onclick="yellow3();">prepend() 테스트</button>
+    <button onclick="yellow4();">append() 테스트</button>
+    <button onclick="yellow5();">appendChild() 테스트</button>
+    <button onclick="onetwothree();">문자열 삽입 테스트</button>
+</body>
+</html>

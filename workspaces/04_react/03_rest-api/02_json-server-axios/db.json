@@ -1,0 +1,31 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "json-server 시작하기",
+      "content": "json-server를 사용하여 데이터를 관리하는 방법을 알아봅니다.",
+      "author": "김말순"
+    },
+    {
+      "id": "2",
+      "title": "fetch API 사용하기",
+      "content": "fetch API를 사용하여 데이터를 관리하는 방법을 알아봅니다.",
+      "author": "홍길동"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "postId": 1,
+      "content": "좋은 글 감사합니다.",
+      "author": "굿퍼슨"
+    },
+    {
+      "id": "2",
+      "postId": 1,
+      "content": "아주 유용했어요~",
+      "author": "강개슨"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

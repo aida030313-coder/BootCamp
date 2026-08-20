@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>02. 태그 이름을 이용한 요소 노드 취득</h1>
+    <ul id="food">
+        <li>김치찌개</li>
+        <li>된장찌개</li>
+        <li>고등어구이</li>
+    </ul>
+    <ul id="drink">
+        <li>커피</li>
+        <li>콜라</li>
+        <li>우유</li>
+    </ul>
+
+    <script>
+        // DOM 전체에서 li 태그를 모두 탐색하여 반환
+        const $list = document.getElementsByTagName('li');
+        console.log($list);
+        console.log($list);
+        console.log($list.length);
+
+        // [...$list].forEach(list => list.style.color = 'blue');
+        Array.from($list).forEach(list => list.style.color = 'blue');
+
+        const $drink = document.getElementById('drink');
+        console.log($drink);
+
+        const $listsFromDrink = $drink.getElementsByTagName('li');
+        console.log($listsFromDrink);
+
+        [...$listsFromDrink].forEach(list => list.style.color = 'red');
+
+        
+        const $noElement = $drink.getElementsByTagName('a');
+        console.log($noElement);   // 빈 HTMLCollection 객체 반환
+    </script>
+</body>
+</html>

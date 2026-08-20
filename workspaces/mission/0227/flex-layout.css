@@ -1,0 +1,33 @@
+        .homepage {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            height: 80px;
+            background: darkseagreen;
+            color: white;
+        }
+        nav {
+            width: 200px;
+            border: 1px solid olive;
+        }
+        #container {
+            display: flex;
+            flex: 1;
+            width: 100%;
+        }
+        main {
+            flex: 1;
+            padding: 20px;
+            border: 2px solid gray
+        }
+        aside {
+            width: 200px;
+            border: 1px solid olive;
+        }
+        #footer {
+            height: 80px;
+            background: darkseagreen;
+            color: white;
+        }

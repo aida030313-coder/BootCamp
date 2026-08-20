@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    📌 동기식(Synchronous)과 비동기식(Asynchronous)
+    1. 동기식(Synchronous)
+      1) 코드가 작성된 순서대로 하나씩 차례대로 실행됨
+      2) 이전 작업이 끝나야 다음 작업이 실행됨
+      3) 예: 일반 함수 호출, for문 등
+      4) 장점
+        - 코드 흐름과 실행 순서를 예측하기 쉬움
+        - 디버깅이 간편함
+      5) 단점
+        - 하나의 작업이 오래 걸리면 전체 프로그램 흐름이 멈춤(블로킹)
+        - 사용자 경험이 저하될 수 있음(예: 서버로부터 응답 대기 중 화면이 멈춤)
+
+    2. 비동기식(Asynchronous)
+      1) 코드가 즉시 실행되는 것이 아니라, 시간이 걸리는 작업은 예약해두고 먼저 다음 코드를 실행함
+      2) 작업 완료 시점에 콜백 함수, Promise, async/await 등을 통해 후속 처리를 진행
+      3) 예: setTimeout, AJAX, 이벤트 핸들러 등
+      4) 장점
+        - 오래 걸리는 작업(네트워크 요청, 파일 읽기 등) 중에도 다른 코드 실행이 가능해 전체 성능이 향상됨
+        - UI가 멈추지 않고 사용자 경험이 좋아짐
+      5) 단점
+        - 코드 흐름의 예측이 어려워짐(순서가 보장되지 않음)
+        - 콜백 지옥(Callback Hell) 등으로 코드가 복잡해질 수 있음
+        - 디버깅이 상대적으로 어려움
+  -->
+  <h4>동기와 비동기</h4>
+  <button id="sync-btn">동기</button>
+  <button id="async-btn">비동기</button>
+  <script>
+    document.querySelector("#sync-btn").addEventListener('click', () => {
+        console.log('메인 작업 시작');
+
+        console.log('부가 작업 시작(무거운 작업)');
+        for(let i = 0; i < 10000000000; i++) {};
+        console.log('부가 작업 종료(무거운 작업)');
+
+        console.log('메인 작업 종료');
+    })
+
+    document.querySelector("#async-btn").addEventListener('click', () => {
+        console.log('메인 작업 시작');
+
+        setTimeout(() => {
+            console.log('부가 작업 시작(무거운 작업)');
+            for(let i = 0; i < 10000000000; i++) {};
+            console.log('부가 작업 종료(무거운 작업)');
+        }, 0);
+        
+        console.log('메인 작업 종료');
+    })
+  </script>
+
+  <hr>
+
+  <h4>비동기 처리를 위한 콜백함수 사용해보기</h4>
+  <button id="request-btn1">데이터 요청 후 후속작업1</button>
+  <button id="request-btn2">데이터 요청 후 후속작업2</button>
+  <script>
+    document.querySelector("#request-btn1").addEventListener('click', () => {
+        console.log('메인 작업 시작');
+
+        fetchData((responseData) => console.log(responseData.name));
+
+        console.log('메인 작업 종료');
+    })
+
+    document.querySelector("#request-btn2").addEventListener('click', () => {
+        console.log('메인 작업 시작');
+
+        fetchData((responseData) => console.log(responseData.age));
+
+        console.log('메인 작업 종료');
+    })
+
+    function fetchData(resolve) {
+        setTimeout(() => {
+            // 데이터 요청
+            const responseData = { name: "홍길동", age: 20};
+
+            resolve(responseData)
+        }, 0)
+    }
+
+  </script>
+  
+  <hr>
+
+  <h4>순차적인 비동기 작업 처리 시 발생하는 콜백 지옥</h4>
+  <button id="request-btn3">데이터 요청 후 후속작업1, 2 순차적으로 수행</button>
+  <script>
+    document.querySelector("#request-btn3").addEventListener('click', () => {
+        console.log('메인 작업 시작');
+
+        // fetchData((responseData) => console.log(responseData.name));
+        // fetchData((responseData) => console.log(responseData.age));
+
+        // 순차  실행 보장 위해 콜백 안에 콜백을 넣어야 한다(콜백 지옥)
+        // 가독성이 떨어지고, 에러 처리도 힘듦
+        fetchData((responseData) => {
+            // 이름 먼저 출력
+            console.log(responseData.name);
+            // 그 다음 작업 > 나이 출력
+            fetchData((responseData) => {
+                console.log(responseData.age);
+            })
+        })
+
+        console.log('메인 작업 종료');
+    })
+  </script>
+
+  <hr>
+
+  <!-- 
+    📌 Promise 
+    1. 자바스크립트의 비동기 작업을 보다 효과적으로 처리하기 위한 객체
+    2. 아직 결과는 없지만 '미래에 결과를 약속'하는 객체를 의미함 
+       따라서 비동기 작업이 완료된 이후 해당 작업의 성공 또는 실패에 따른 결과값 처리를 할 수 있음 
+    3. Promise의 상태 
+      1) pending   : 대기 상태 (처음 생성된 직후, 아직 결과가 정해지지 않음)
+      2) fulfilled : 이행 상태 (비동기 작업 성공, 결과 값을 반환)
+      3) rejected  : 거부 상태 (비동기 작업 실패, 에러 값을 반환)
+    4. 사용 예시 
+      1) 비동기 작업을 수행하는 Promise 객체 생성 
+        const promise = new Promise((resolve, reject) => { // 성공시 이행할 함수와 실패시 거부할 함수를 콜백함수로 전달받음
+          // 비동기 작업 수행
+          if (성공) {
+            resolve(결과값); // 작업이 성공했음을 알리고 결과값 전달 
+          } else {
+            reject(에러값);  // 작업이 실패했음을 알리고 에러값 전달 
+          }
+        });
+      2) 비동기 작업의 결과값 처리 
+        promise.then((result) => {
+          // 성공시 실행될 함수
+        }).catch((error) => {
+          // 실패시 실행될 함수
+        });
+    5. Promise의 장점 
+      1) Promise를 활용하면 비동기 작업의 흐름을 보다 "직관적"이고 예측 가능하게 작성할 수 있음
+      2) then(), catch() 메서드를 이용해 비동기 작업의 결과(성공/실패)를 단계별로 처리 가능
+      3) 체이닝(then)을 통해 깔끔한 흐름 제어 가능 
+  -->
+
+  <h4>Promise 객체 사용하여 콜백지옥 개선</h4>
+  <button id="promise-btn">데이터 요청 후 후속작업</button>
+  <script>
+    document.querySelector("#promise-btn").addEventListener('click', () => {
+        console.log('메인 작업 시작');
+
+        // console.log('promise', fetchDataByPromise());
+        fetchDataByPromise()
+        .then((responseData) => {
+            console.log(responseData.name);
+            return responseData
+        })   // 새로운 Promise 객체(첫 번째 then 내부 콜백함수의 반환값으로 이행됨)
+        .then((responseData) => {
+            console.log(responseData.age);
+        })
+
+        console.log('메인 작업 종료');
+    })
+
+    // 데이터를 가져오는 함수 => Promise 객체 활용
+    function fetchDataByPromise() {
+        return new Promise((resolve) => {
+            // 데이터 요청
+            const responseData = {name: '홍길동', age: 20};
+            resolve(responseData);
+        })
+    }
+  </script>
+
+  <hr>
+
+  <!-- 
+    📌 Fetch API
+    1. HTTP 파이프라인을 구성하는 요청과 응답 등의 요소를 JavaScript 에서 접근하고 조작할 수 있는 인터페이스
+    2. Fetch API 가 제공하는 fetch() 전역 함수를 이용해 네트워크의 리소스를 쉽게 비동기적으로 취득할 수 있음
+    3. Fetch API 는 XMLHttpRequest 와 달리 프로미스 기반으로 개선되었음
+    4. fetch() 전역 함수 
+      1) 네트워크에서 자원을 취득한 뒤 응답 가능 상태가 되면 이를 이행하는 프로미스를 반환하는 함수
+      2) fetch() 전역 함수가 반환하는 프로미스는 요청에 대한 응답 정보를 가진 Response 객체를 이행함
+      4) 사용 예시 
+        fetch(resource, [options])
+          .then((response) => 실행내용)
+          .catch((error) => 실행내용)
+
+        - resource : 취득하려는 리소스(자원)의 정보 (리소스의 URL 문자열 또는 Request 객체)
+        - options : 리소스를 요청할 때 적용하고자 하는 사용자 지정 설정 (method, headers, body, mode, credentials 등)
+        - then() : 응답 정보를 이행함수로 전달받아 실행하는 메소드
+        - catch() : 응답 정보를 거부함수로 전달받아 실행하는 메소드
+  -->
+
+  <h4>실제 HTTP 통신으로 데이터 요청해보기 - Fetch API 사용</h4>
+  <button id="fetch-btn">1번 게시글 데이터 요청 후 게시글의 제목 화면에 출력</button>
+  <div>1번 게시글 제목: <span id="post-title"></span></div>
+  <script>
+    document.querySelector("#fetch-btn").addEventListener('click', () => {
+
+        fetch("https://jsonplaceholder.typicode.com/posts/1")
+        .then((response) => response.json())
+        .then((jsonData) => document.querySelector("#post-title").innerText = jsonData.title);        
+    })   // 백엔드와 협업 시, 이 방법으로 소통할 것
+  </script>
+  
+  <hr>
+
+  <!-- 
+    📌 async 함수와 await 문
+    1. ES2017에 도입된 비동기 처리 문법
+    2. 기존의 콜백과 Promise 체이닝(then)의 복잡함을 해결하기 위해 등장 
+    3. 비동기 코드를 동기 코드처럼 읽기 쉽게 작성 가능 
+    4. 사용 예시
+      async function fetchData() {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+        const jsonData = await response.json();
+        document.getElementById('post-title').innerText = jsonData.title;
+      }
+  -->
+
+  <h4>실제 HTTP 통신으로 데이터 요청해보기 - Fetch API + async/await 사용</h4>
+  <button id="async-await-btn">1번 게시글 데이터 요청 후 게시글의 내용 화면에 출력</button>
+  <div>1번 게시글 내용: <span id="post-content"></span></div>
+  <script>
+    document.querySelector("#async-await-btn").addEventListener('click', () => {
+        fetchDataByAsyncAwait();
+    })
+
+    async function fetchDataByAsyncAwait() {
+        const response = await fetch("https://jsonplaceholder.typicode.com/posts/1");   // Promise 객체 반환
+        const jsonData = await response.json();
+        // console.log(jsonData);
+        document.querySelector("#post-content").innerText = jsonData.body;
+    }
+  </script>
+  
+  <hr>
+  
+  <!--
+    📌 Axios 라이브러리
+    1. Axios는 fetch와 달리 별도의 json() 처리 없이 바로 JS 객체로 데이터를 받을 수 있음
+    2. 응답 데이터는 response.data 안에 들어 있음 
+    3. Promise 기반으로 동작하므로 then과 catch 메소드를 사용할 수 있음
+    4. 자세한 사용법 참고 사이트: https://github.com/axios/axios#example
+  -->
+
+	<h4>실제 HTTP 통신으로 데이터 요청해보기 - Axios 사용</h4>
+  <button id="axios-btn">첫 번째 유저 데이터 요청 후 유저의 이름 화면에 출력</button>
+  <div>첫 번째 유저 이름: <span id="user-name"></span></div>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    document.querySelector("#axios-btn").addEventListener('click', () => {
+        axios.get("https://jsonplaceholder.typicode.com/users")   // Promise 객체 반환
+        .then(response => {
+            console.log(response);
+            console.log(response.data);
+
+            document.querySelector('#user-name').innerText = response.data[0].name;
+        })
+        .catch((error) => {
+            console.log('데이터 통신 실패', error);
+        })
+    })
+  </script>
+
+</body>
+</html>
+</body>
+</html>

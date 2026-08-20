@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .main {
+            width: 297px;
+            height: 35px;
+            background: #FFB9B9;
+
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            gap: 16px;
+
+            box-sizing: border-box;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .home, .week, .best {
+            font-weight: 700;
+            font-size: 16px;
+            color: #FFFFFF;
+            height: 19px;
+
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .home {
+            width: 45px;
+        }
+
+        .week, .best {
+            width: 74px;
+        }
+
+        .dot1, .dot2 {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #D9D9D9;
+        }
+    </style>
+
+    <div class="main">
+        <div class="home">웹툰홈</div>
+        <div class="dot1"></div>
+        <div class="week">요일별웹툰</div>
+        <div class="dot2"></div>
+        <div class="best">베스트도전</div>
+    </div>
+</body>
+</html>

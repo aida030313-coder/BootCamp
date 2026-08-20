@@ -1,0 +1,92 @@
+        /* 속성값과 일치하는 태그, 요소 선택자 */
+        div[name=name2] {
+            background: forestgreen;
+        }
+
+        /* 속성 안의 값이 접두사로 특정 값을 단어로서 포함하는 것 선택 */
+        div[name~=name1] {
+            background: salmon;
+        }
+
+        /* 속성 값이 특정 값과 일치하거나, 접두사로 시작하는 것 선택 */
+        div[class|=class] {
+            background: khaki;
+        }
+
+        /* 속성값을 가지고 있으며, 접두사로 특정 값이 포함되어 있는 것 선택 */
+        div[name^=name] {
+            background: skyblue;
+        }
+        /* 속성 안의 값이 특정 값으로 끝나는(접미사) 것 선택 */
+        div[class$=class] {
+            color:azure;
+        }
+
+        div[class*=div] {
+            background: cornflowerblue;
+            color: darkblue;
+        }
+
+        /* 자손 선택자 */
+        #test1>h4 {
+            background: hotpink;   
+        }
+
+        #test1>div>ul>li {
+            background: olive;
+        }
+
+        /* 후손 선택자 */
+        #test1 ul {
+            background: lavender;
+            color: purple;
+        }
+
+        /* 형제관계 선택자(동위 선택자) */
+        #div-test1 {
+            background: orangered;
+        }
+
+        /* 해당 요소 바로 다음에 특정 타입의 요소를 선택 */
+        #div-test1 + div {
+            background: mediumseagreen;
+        }
+
+        /* #div-test1 ~ div {
+            background: black;
+            color: whitesmoke;
+        } */
+
+        #active-test, #hover-test {
+            width: 300px;
+            height: 300px;
+            background: grey;
+        }
+
+        #active-test:active {
+            background: yellowgreen;
+            color: orange;
+        }
+
+        #hover-test:hover {
+            background: blue;
+            font: 40px bold;
+            cursor: pointer;
+        }
+
+        input[type=checkbox]:checked {
+            width: 20px;
+            height: 20px;
+        }
+
+        #userId:focus, #userPwd:focus {
+            background: brown;
+        }
+        
+        option:disabled {
+            background: red;
+        }
+
+        option:enabled {
+            background: blue;
+        }

@@ -1,0 +1,67 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "test@test.com",
+      "password": "1234",
+      "name": "홍길동",
+      "role": "USER"
+    },
+    {
+      "id": 2,
+      "email": "admin@test.com",
+      "password": "1234",
+      "name": "관리자",
+      "role": "ADMIN"
+    },
+    {
+      "id": 1779258589684,
+      "name": "쿠키씨",
+      "email": "cookie@test.com",
+      "password": "111111",
+      "role": "USER"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "Next.js 16 학습 중",
+      "content": "서버 액션 너무 편하네요.",
+      "userId": 1,
+      "author": "홍길동",
+      "createdAt": "2025-05-01T09:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "title": "관리자 필독 공지",
+      "content": "게시판 이용 수칙입니다.",
+      "userId": 2,
+      "author": "관리자",
+      "createdAt": "2025-05-02T10:00:00.000Z"
+    },
+    {
+      "title": "test",
+      "content": "test1234",
+      "userId": 1,
+      "author": "홍길동",
+      "createdAt": "2026-05-19T00:55:51.447Z",
+      "id": 3
+    },
+    {
+      "title": "되나",
+      "content": "돼라",
+      "userId": 1,
+      "author": "홍길동",
+      "createdAt": "2026-05-20T07:15:14.116Z",
+      "id": 4
+    },
+    {
+      "title": "test",
+      "content": "test",
+      "userId": 1,
+      "author": "홍길동",
+      "createdAt": "2026-05-20T07:18:38.751Z",
+      "id": 5
+    }
+  ]
+}

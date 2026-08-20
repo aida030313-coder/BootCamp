@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>실습 3: 종합 실습 - 프로필 페이지 만들기</title>
+</head>
+<body class="bg-gray-100 p-10">
+
+  <h1 class="text-3xl font-bold text-center text-gray-800 mb-10">
+    실습 3: 종합 실습 - 프로필 페이지 만들기
+  </h1>
+
+  <!-- 
+    ============================================
+    종합 실습: 프로필 페이지 완성하기
+    ============================================
+    아래 HTML 구조를 참고하여 Tailwind CSS 클래스를 추가하여 프로필 페이지를 완성하세요.
+    
+    요구사항:
+    1. 전체 컨테이너: 최대 너비 4xl, 중앙 정렬
+    2. 헤더 섹션: 
+       - 배경 그라데이션 (bg-gradient-to-r from-blue-500 to-purple-600)
+       - 패딩, 둥근 모서리, 그림자
+       - 프로필 이미지: 중앙 정렬, 원형, 테두리
+    3. 정보 섹션:
+       - 흰색 배경 카드
+       - 적절한 패딩과 간격
+    4. 스킬 섹션:
+       - Grid 레이아웃 (모바일 1열, 태블릿 2열, 데스크탑 3열)
+       - 각 스킬은 배지 형태로 스타일링
+    5. 프로젝트 섹션:
+       - Grid 레이아웃 (모바일 1열, 태블릿 2열)
+       - 각 프로젝트 카드에 호버 효과 추가
+  -->
+
+  <div class="max-w-4xl mx-auto">
+    
+    <!-- 헤더 섹션 -->
+    <div class="
+    bg-gradient-to-r from-blue-500 to-purple-600
+    p-8 rounded-lg shadow-lg mb-4
+    ">
+      <div class="text-center">
+        <img 
+          class="rounded-full mx-auto ring-4 ring-white mb-4" 
+          src="https://placehold.co/150" 
+          alt="Profile"
+        >
+        <h2 class="text-white font-bold text-xl mb-4">김개발</h2>
+        <p class="text-white mb-4">프론트엔드 개발자</p>
+        <div class="flex justify-center gap-4">
+          <button class="bg-white rounded-lg font-bold text-blue-700 px-5 py-2">
+            이메일
+          </button>
+          <button class="bg-white rounded-lg font-bold text-blue-700 px-5 py-2">
+            GitHub
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 정보 섹션 -->
+    <div class="rounded-lg bg-white shadow-md p-6 mb-4">
+      <h3 class="font-bold text-xl mb-2">소개</h3>
+      <p class="text-gray-500">
+        안녕하세요! 프론트엔드 개발을 좋아하는 개발자입니다. 
+        React, Vue, Tailwind CSS를 주로 사용합니다.
+      </p>
+    </div>
+
+    <!-- 스킬 섹션 -->
+    <div class="rounded-lg bg-white shadow-md p-6 mb-4">
+      <h3 class="font-bold text-xl mb-2">기술 스택</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <span class="bg-sky-100 text-blue-700 rounded-full text-center py-2">HTML</span>
+        <span class="bg-sky-100 text-blue-700 rounded-full text-center py-2">CSS</span>
+        <span class="bg-sky-100 text-blue-700 rounded-full text-center py-2">JavaScript</span>
+        <span class="bg-sky-100 text-blue-700 rounded-full text-center py-2">React</span>
+        <span class="bg-sky-100 text-blue-700 rounded-full text-center py-2">Vue</span>
+        <span class="bg-sky-100 text-blue-700 rounded-full text-center py-2">Tailwind CSS</span>
+      </div>
+    </div>
+
+    <!-- 프로젝트 섹션 -->
+    <div class="rounded-lg bg-white shadow-md p-6 mb-4">
+      <h3 class="font-bold text-xl mb-2">프로젝트</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- 프로젝트 1 -->
+        <div class="bg-gray-100 rounded-xl p-4">
+          <h4 class="font-bold text-lg">프로젝트 1</h4>
+          <p class="text-gray-500 mb-2">React와 Tailwind CSS를 사용한 웹 애플리케이션</p>
+          <div class="">
+            <span class="bg-gray-300 rounded-lg text-gray-600 px-3">React</span>
+            <span class="bg-gray-300 rounded-lg text-gray-600 px-3">Tailwind</span>
+          </div>
+        </div>
+
+        <!-- 프로젝트 2 -->
+        <div class="bg-gray-100 rounded-xl p-4">
+          <h4 class="font-bold text-lg">프로젝트 2</h4>
+          <p class="text-gray-500 mb-2">Vue.js를 활용한 대시보드 구현</p>
+          <div class="">
+            <span class="bg-gray-300 rounded-lg text-gray-600 px-3">Vue</span>
+            <span class="bg-gray-300 rounded-lg text-gray-600 px-3">JavaScript</span>
+          </div>
+        </div>
+
+        <!-- 프로젝트 3 -->
+        <div class="bg-gray-100 rounded-xl p-4">
+          <h4 class="font-bold text-lg">프로젝트 3</h4>
+          <p class="text-gray-500 mb-2">반응형 웹사이트 디자인 및 개발</p>
+          <div class="">
+            <span class="bg-gray-300 rounded-lg text-gray-600 px-3">HTML</span>
+            <span class="bg-gray-300 rounded-lg text-gray-600 px-3">CSS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</body>
+</html>

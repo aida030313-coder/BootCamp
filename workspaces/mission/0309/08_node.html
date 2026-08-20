@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .original {
+          background: lightblue;
+          padding: 10px;
+          margin: 5px;
+          border: 2px solid blue;
+        }
+        .clone {
+          background: lightgreen;
+          padding: 10px;
+          margin: 5px;
+          border: 2px solid green;
+        }
+        .container {
+          border: 1px solid black;
+          padding: 10px;
+          margin: 10px;
+        }
+    </style>
+
+    <script>
+        function fff() {
+            const target = document.querySelector(".original");
+            const print = document.querySelector(".copy");
+
+            const paste = target.cloneNode(false);
+            paste.className = "clone";
+            paste.innerText = "파라미터 : false";
+
+            print.append(paste);
+        }
+
+        function ttt() {
+            const target = document.querySelector(".original");
+            const print = document.querySelector(".copy");
+
+            const paste = target.cloneNode(true);
+            paste.className = "clone";
+
+            print.append(paste);
+        }
+
+        function gone() {
+            const target = document.querySelector(".clone");
+            target.remove();
+        }
+    </script>
+
+    <div class="container origin">
+        <div class="original">
+            <h3>원본 요소</h3>
+            <p>자식 요소1</p>
+            <p>자식 요소2</p>
+        </div>
+    </div>
+
+    <div class="container copy">
+        <h3>복제된 요소들이 여기 추가됩니다.</h3>
+    </div>
+
+    <button onclick="fff();">파라미터: false</button>
+    <button onclick="ttt();">파라미터: true</button>
+    <button onclick="gone();">복사본 제거</button>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+    * <ul>
+    1) 순서가 없는 목록 (unordered list)
+    2) 블럭요소
+    3) 글머리기호(불릿기호)를 이용해 목록이 구성됨
+        → disc   : ●  (디폴트)
+        → circle : ○
+        → square : ■
+    4) 형식
+        <ul type="">
+          <li>목록1</li>
+          <li>목록2</li>
+          <li>목록3</li>
+        </ul>
+  -->
+        <h1>된장찌개에 들어가는 재료</h1>
+        <ul>
+            <li>된장</li>
+            <li>차돌박이</li>
+            <li>애호박</li>
+            <li>양파</li>
+        </ul>
+
+        <ul>
+            <li>된장</li>
+            <li>차돌박이</li>
+            <li>야채
+                <ul>
+                    <li>애호박</li>
+                    <li>양파</li>
+                </ul>
+            </li>
+        </ul>
+
+  <!-- 
+    * <ol>
+    1) 순서가 있는 목록 (ordered list)
+    2) 블럭요소
+    3) 번호를 이용해 목록이 구성됨
+        → 1 : 1,2,3,..  (디폴트)
+        → A : A,B,C,..
+        → a : a,b,c,..
+        → I : I,II,III,..
+        → i : i,ii,iii,..
+    4) 형식
+        <ol type="" start="" reversed>
+          <li>목록1</li>
+          <li>목록2</li>
+          <li>목록3</li>
+        </ol>
+  -->
+        <h1>된장찌개를 끓이는 순서</h1>
+        <ol type="a" start="3" reversed>
+            <li>멸치 다시마 육수를 낸다.</li>
+            <li>된장을 푼다.</li>
+            <li>재료들을 넣고 끓인다.</li>
+        </ol>
+
+    <!-- 
+    * <dl>
+    1) 개요 목록 (description list)
+    2) 블럭요소
+    3) 제목과 설명으로 하나의 목록이 구성됨
+    4) 형식
+        <dl>
+          <dt>제목1</dt>
+          <dd>설명1</dd>
+          <dt>제목2</dt>
+          <dd>설명2</dd>
+        </dl>
+    -->
+
+    <h1>된장찌개</h1>
+    <dl>
+        <dt>된장찌개의 재료</dt>
+        <dd>주 재료는 된장....... 등등 있다.</dd>
+        <dt>된장찌개 끓이는 순서</dt>
+        <dd>뚝배기에 물을 넣고.......</dd>
+    </dl>
+    
+</body>
+</html>

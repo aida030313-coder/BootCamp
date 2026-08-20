@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chart.js Core</title>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .chart-container {
+      background: white;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #333;
+      margin-top: 0;
+    }
+    canvas {
+      max-height: 400px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Chart.js Core 기본</h1>
+
+  <!-- 1. Line Chart (선 그래프) -->
+  <div class="chart-container">
+    <h2>1. Line Chart - 월별 매출 추이</h2>
+    <canvas id="lineChart"></canvas>
+  </div>
+
+  <!-- 2. Bar Chart (막대 그래프) -->
+  <div class="chart-container">
+    <h2>2. Bar Chart - 제품별 판매량</h2>
+    <canvas id="barChart"></canvas>
+  </div>
+
+  <!-- 3. Pie Chart (파이 차트) -->
+  <div class="chart-container">
+    <h2>3. Pie Chart - 시장 점유율</h2>
+    <canvas id="pieChart"></canvas>
+  </div>
+
+  <!-- 4. Doughnut Chart (도넛 차트) -->
+  <div class="chart-container">
+    <h2>4. Doughnut Chart - 예산 분배</h2>
+    <canvas id="doughnutChart"></canvas>
+  </div>
+
+  <script>
+
+    // ============= Chart.js 기본 구조  ============
+    /*
+      1. canvas 요소 선택
+        - document.getElementById()로 canvas 요소를 가져옴
+        - .getContext('2d')로 2D 렌더링 컨텍스트를 얻음
+      
+      2. new Chart() 생성자
+        - 첫 번째 인자: canvas의 2d context
+        - 두 번째 인자: 설정 객체
+      
+      3. 설정 객체의 주요 속성:
+        - type: 차트 타입 ('line', 'bar', 'pie', 'doughnut' 등)
+        - data: 차트에 표시할 데이터
+          - labels: x축 또는 카테고리 레이블
+          - datasets: 실제 데이터 배열
+            - label: 데이터셋 이름
+            - data: 값들의 배열
+            - backgroundColor: 배경색
+            - borderColor: 테두리색
+        - options: 차트 옵션
+          - responsive: 반응형 설정
+          - plugins: 플러그인 설정 (legend, title, tooltip 등)
+          - scales: 축 설정
+      
+      4. 색상 표현:
+        - 'rgb(r, g, b)': 불투명 색상
+        - 'rgba(r, g, b, a)': 투명도가 있는 색상 (a: 0~1)
+    */
+
+
+    // ===== 1. Line Chart (선 그래프) =====
+    const lineCtx = document.getElementById('lineChart').getContext('2d');
+    const lineChart = new Chart(lineCtx, {
+      type: 'line', // 차트 타입
+      data: {
+        labels: ['1월', '2월', '3월', '4월', '5월', '6월'], // x축 레이블
+        datasets: [{
+          label: '2024년 매출', // 데이터셋 이름
+          data: [12, 19, 3, 5, 2, 3], // 실제 데이터
+          borderColor: 'rgb(75, 192, 192)', // 선 색상
+          backgroundColor: 'rgba(75, 192, 192, 0.1)', // 영역 배경색
+          tension: 0.1, // 선의 곡률 (0: 직선, 1: 부드러운 곡선)
+        }, {
+          label: '2023년 매출',
+          data: [8, 11, 7, 9, 6, 8],
+          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          tension: 0.1,
+        }]
+      },
+      options: {
+        responsive: true, // 반응형
+        plugins: {
+          legend: {
+            display: true, // 범례 표시
+            position: 'top' // 범례 위치
+          },
+          title: {
+            display: true,
+            text: '월별 매출 비교'
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true // y축을 0부터 시작
+          }
+        }
+      }
+    });
+
+    // ===== 2. Bar Chart (막대 그래프) =====
+    const barCtx = document.getElementById('barChart').getContext('2d');
+    const barChart = new Chart(barCtx, {
+      type: 'bar',
+      data: {
+        labels: ['노트북', '스마트폰', '태블릿', '이어폰', '모니터'],
+        datasets: [{
+          label: '판매량 (개)',
+          data: [65, 59, 80, 81, 56],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.7)',
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(255, 206, 86, 0.7)',
+            'rgba(75, 192, 192, 0.7)',
+            'rgba(153, 102, 255, 0.7)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false // 범례 숨기기
+          },
+          title: {
+            display: true,
+            text: '제품별 판매량 현황'
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              stepSize: 10 // y축 눈금 간격
+            }
+          }
+        }
+      }
+    });
+
+    // ===== 3. Pie Chart (파이 차트) =====
+    const pieCtx = document.getElementById('pieChart').getContext('2d');
+    const pieChart = new Chart(pieCtx, {
+      type: 'pie',
+      data: {
+        labels: ['회사 A', '회사 B', '회사 C', '회사 D', '기타'],
+        datasets: [{
+          label: '시장 점유율 (%)',
+          data: [30, 25, 20, 15, 10],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.8)',
+            'rgba(54, 162, 235, 0.8)',
+            'rgba(255, 206, 86, 0.8)',
+            'rgba(75, 192, 192, 0.8)',
+            'rgba(153, 102, 255, 0.8)'
+          ],
+          borderWidth: 2,
+          borderColor: '#fff'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'right' // 범례를 오른쪽에 배치
+          },
+          title: {
+            display: true,
+            text: '스마트폰 시장 점유율'
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return context.label + ': ' + context.parsed + '%';
+              }
+            }
+          }
+        }
+      }
+    });
+
+    // ===== 4. Doughnut Chart (도넛 차트) =====
+    const doughnutCtx = document.getElementById('doughnutChart').getContext('2d');
+    const doughnutChart = new Chart(doughnutCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['마케팅', '개발', '인사', '운영', '기타'],
+        datasets: [{
+          label: '예산 (백만원)',
+          data: [300, 500, 150, 200, 100],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.8)',
+            'rgba(54, 162, 235, 0.8)',
+            'rgba(255, 206, 86, 0.8)',
+            'rgba(75, 192, 192, 0.8)',
+            'rgba(153, 102, 255, 0.8)'
+          ],
+          borderWidth: 2,
+          borderColor: '#fff',
+          hoverOffset: 15 // 호버 시 확대 효과
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          },
+          title: {
+            display: true,
+            text: '부서별 예산 분배'
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                const percentage = ((context.parsed / total) * 100).toFixed(1);
+                return context.label + ': ' + context.parsed + '백만원 (' + percentage + '%)';
+              }
+            }
+          }
+        },
+        cutout: '50%' // 도넛 구멍의 크기 (0%: 파이차트, 100%: 링만 남음)
+      }
+    });    
+
+  </script>
+</body>
+</html>

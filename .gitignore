@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+.next/
+dist/
+build/
+out/
+.vercel/
+.turbo/
+
+# Env files (may contain secrets)
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS/editor
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@next/bundle-analyzer": "^16.2.7",
+    "cross-env": "^10.1.0"
+  }
+}

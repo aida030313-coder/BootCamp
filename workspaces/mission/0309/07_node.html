@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+      .container {
+        border: 2px solid red;
+        padding: 15px;
+        margin: 10px;
+      }
+      .item {
+        background: lightcoral;
+        padding: 10px;
+        margin: 5px;
+        border: 1px solid darkred;
+      }
+    </style>
+
+    <script>
+        function one() {
+            const parent = document.querySelector(".container");
+            const child = document.querySelector(".one");
+
+            parent.removeChild(child);
+        }
+
+        function two() {
+            const parent = document.querySelector(".container");
+            const child = document.querySelector(".two");
+
+            parent.removeChild(child);
+        }
+
+        function three() {
+            const parent = document.querySelector(".container");
+            const child = document.querySelector(".three");
+
+            parent.removeChild(child);
+        }
+
+        function last() {
+            const parent = document.querySelector(".container");
+            const child = document.querySelector(".four");
+
+            parent.removeChild(child);
+        }
+    </script>
+
+    <div class="container">
+        <div class="item one">삭제할 자식 1</div>
+        <div class="item two">삭제할 자식 2</div>
+        <div class="item three">삭제할 자식 3</div>
+        <div class="item four">삭제할 자식 4</div>
+    </div>
+
+    <button onclick="one();">첫 번째 자식 삭제</button>
+    <button onclick="two();">두 번째 자식 삭제</button>
+    <button onclick="three();">세 번째 자식 삭제</button>
+    <button onclick="last();">마지막 자식 삭제</button>
+</body>
+</html>

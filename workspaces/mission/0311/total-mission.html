@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0311 Total Mission</title>
+</head>
+<body>
+    <style>
+        button {
+            width: 100px;
+            height: 35px;
+            color: white;
+            background: deepskyblue;
+            border: none;
+        }
+
+        input {
+            height: 20px;
+        }
+    </style>
+
+    <h1>사용자 입력 양식 이벤트 연습하기</h1>
+
+    <form>
+        <label for="name">이름</label><br>
+            <input type="text" id="name" placeholder="이름을 입력하세요" required>
+        </div>
+
+        <br><br>
+
+        <label for="email">이메일</label><br>
+            <input type="email" id="email" placeholder="example@domain.com" required>
+        </div>
+
+        <br><br>
+
+        <label>성별</label><br>
+        <input type="radio" value="M" name="gender" id="male">
+        <label for="male">남자</label>
+        <input type="radio" value="F" name="gender" id="female" checked>
+        <label for="female">여자</label>
+        
+        <br><br>
+
+        <label>참여 일자 선택</label><br>
+                <select name="date" required>
+                    <option value=""> -- 날짜 선택 -- </option>
+                    <option value="11"> 2026년 3월 11일</option>
+                    <option value="12"> 2026년 3월 12일</option>
+                    <option value="13"> 2026년 3월 13일</option>
+                </select>
+
+        <br><br>
+
+        <label type="text">요청사항</label><br>
+            <input placeholder="요청 사항을 입력하세요">
+
+        <br>
+
+        <label>
+            <input type="checkbox" required><b>개인정보 수집에 동의합니다. </b>
+        </label>
+
+        <br><br>
+
+        <button type="submit">신청하기</button>
+    </form>
+</body>
+</html>

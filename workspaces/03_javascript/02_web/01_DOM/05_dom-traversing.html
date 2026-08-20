@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+    📌 노드 탐색
+    1. 특정 노드 취득 후 취득한 요소 기준으로 DOM 트리의 노드를 옮겨 다니며 부모, 형제, 자식 노드를 탐색하는 방법
+    2. Node, Element 에서 탐색을 위한 프로퍼티를 제공함 
+    3. 주요 노드 종류
+      1) 텍스트 노드 (Text Node)  : 태그 사이에 정의되어 있는 텍스트 데이터 
+      2) 요소 노드 (Element Node) : 태그로 이루어진 요소 
+    4. 유의 사항
+      요소 사이의 스페이스, 탭, 줄바꿈(개행) 등의 공백 문자는 텍스트 노드를 생성함 
+      ex) <div>
+            <h1>안녕</h1>
+          </div>
+
+          요소 노드 : <div>
+            → 텍스트노드("\n") // div 다음의 엔터 <h1> 앞의 tab
+            → 요소노드(<h1></h1>)
+               → 텍스트노드("안녕") 
+            → 텍스트노드("\n") 
+  -->
+
+  <!-- 
+    * 자식 노드 탐색 
+    1. Node.prototype.childNodes : 자식 노드(요소 노드, 텍스트 노드)를 탐색하여 NodeList에 담아 반환 
+    2. Node.prototype.firstChild : 첫번째 자식 노드(요소 노드, 텍스트 노드) 반환 
+    3. Node.prototype.lastChild  : 마지막 자식 노드(요소 노드, 텍스트 노드) 반환 
+    4. Element.prototype.children : 자식 노드 중 요소 노드만 탐색하여 HTMLCollection에 담아 반환
+    5. Element.prototype.firstElementChild : 첫번째 자식 요소 노드 반환 
+    6. Element.prototype.lastElementChild  : 마지막 자식 요소 노드 반환 
+
+    * 부모 노드 탐색 
+    1. Node.prototype.parentNode : 부모 노드(요소 노드, 텍스트 노드)를 탐색하여 반환
+    2. Node.prototype.parentElement : 부모 노드(요소 노드)를 탐색하여 반환
+
+    * 형제 노드 탐색 
+    1. Node.prototype.previousSibling : 형제 노드 중 자신의 이전 형제 노드(요소노드, 텍스트노드)를 탐색하여 반환
+    2. Node.prototype.nextSibling : 형제 노드 중 자신의 다음 형제 노드(요소노드, 텍스트노드)를 탐색하여 반환
+    3. Element.prototype.previousElementSibling : 형제 요소 노드 중 자신의 이전 형제 요소 노드를 탐색하여 반환
+    4. Element.prototype.nextElementSibling : 형제 요소 노드 중 자신의 다음 형제 요소 노드를 탐색하여 반환
+  -->
+
+    <h2>노드 탐색</h2>
+
+    <ul id ="test">
+        <li class="coffee">커피</li>
+        <li class="coke">콜라</li>
+        <li class="milk">우유</li>
+    </ul>
+
+    <button onclick="childNodeTraversing();">자식노드 탐색</button>
+    <button onclick="parentNodeTraversing();">부모노드 탐색</button>
+    <button onclick="siblingNodeTraversing();">형제노드 탐색</button>
+
+    <script>
+
+        function childNodeTraversing() {
+
+            const $test = document.querySelector('#test');
+            console.log($test);
+            console.log($test.hasChildNodes());
+
+            console.log($test.childNodes);
+            console.log($test.children);
+
+            // 첫번째 자손
+            console.log($test.firstChild);
+            console.log($test.firstElementChild);
+
+            // 마지막 자손
+            console.log($test.lastChild);
+            console.log($test.lastElementChild);
+
+        }
+
+        function parentNodeTraversing() {
+            
+            const $coke = document.querySelector('.coke');
+
+            console.log($coke);
+
+            console.log($coke.parentNode);
+            console.log($coke.parentElement);
+
+            console.log($coke.parentNode.children[0].textContent);
+            console.log($coke.parentElement.children[0].textContent);
+
+        }
+
+        function siblingNodeTraversing() {
+            
+            const $coke = document.querySelector('.coke');
+
+            console.log($coke.previousElementSibling);
+            console.log($coke.nextElementSibling);
+            
+        }
+
+  </script>
+</body>
+</html>

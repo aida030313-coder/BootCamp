@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>기존 내용</h2>
+
+    <script>
+        function btn() {
+            const parent = document.querySelector('#textArea')
+
+            const box = document.createElement('div');
+            const text1 = document.createTextNode('안녕하세요! createElement로 만든 요소입니다.');
+            const br = document.createElement('br');
+            const text2 = document.createTextNode('이 텍스트는 span입니다.');
+
+            box.appendChild(text1);
+            box.appendChild(br);
+            box.appendChild(text2);
+
+            parent.appendChild(box);
+        }
+    </script>
+
+    <div id="textArea"></div>
+
+    <button onclick="btn();">요소 생성하기</button>
+</body>
+</html>

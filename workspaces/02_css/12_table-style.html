@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .table1 {
+            border: 1px solid gray;
+
+            /* 셀 간격 */
+            border-spacing: 1px;
+            border-spacing: 10px 5px;
+
+            border-collapse: collapse;
+        }
+
+        .table1 td {
+            border: 1px solid gray;
+
+            border-bottom: 1px solid green;
+
+            text-align: center;
+        }
+
+        /* 첫 번째 열(회원번호) */
+        .table1 td:first-of-type {
+            width: 80px;
+        }
+        /* 두 번째 열(회원명) */
+        .table1 td:nth-of-type {
+            width: 200px;
+        }
+        /* 마지막 열(포인트) */
+        .table1 td:last-of-type {
+            width: 100px;
+        }
+
+        /* tbody 영역 스타일 */
+        .table1>tbody td {
+            height: 50px;
+        }
+        /* thead/tfoot 영역 스타일 */
+        .table1>thead td, .table1>tfoot td {
+            padding: 10px;
+            font-weight: 1000;
+        }
+        /* 행 hover 효과 */
+        .table1>tbody>tr:hover {
+            background-color: rgb(240, 131, 242);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>테이블 스타일</h1>
+    <table class="table1">
+        <thead>
+            <tr>
+                <td>회원번호</td>
+                <td>회원명</td>
+                <td>포인트</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>고길동</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>고사리</td>
+                <td>200</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>고라니</td>
+                <td>300</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">포인트 합계</td>
+                <td>600
+            </tr>
+    </table>
+</body>
+</html>

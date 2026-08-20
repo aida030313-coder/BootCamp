@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+    📌노드 생성 및 추가 
+    1. Document.prototype.createElement(tagName) : 인자로 전달받은 태그 이름에 해당하는 요소 노드 생성 후 반환 
+    2. Document.prototype.createTextNode(text)   : 인자로 전달받은 텍스트 값으로 텍스트 노드 생성 후 반환 
+    3. Node.prototype.appendChild(childNode)     : 인자로 전달받은 노드를 appendChild를 호출한 노드의 마지막 자식 노드로 추가
+    -->
+
+    <h2>동적으로 노드 생성 및 추가</h2>
+
+    <ul id="drink1">
+        <li>커피</li>
+    </ul>
+
+    <script>
+        const $drink1 = document.getElementById('drink1');
+
+        // 요소 생성
+        const $li = document.createElement('li');
+
+        // 텍스트 노드 생성
+        const textNode = document.createTextNode('콜라');
+
+        $li.appendChild(textNode);
+
+        $drink1.appendChild($li);
+    </script>
+  
+
+    <hr>
+
+    <!--
+    📌void 요소
+    내용(자식 노드)을 가질 수 없는 HTML 요소
+    따라서 닫는 태그가 존재하지 않음
+    예)img, br, hr, input, meta, link
+     -->
+
+<h3>void 요소 노드 생성 및 추가</h3>
+    <div id="img-container"></div>
+
+    <button onclick="createVoidNode();">void 요소 노드 생성 및 추가</button>
+
+    <script>
+        function createVoidNode() {
+            const $imgElement = document.createElement("img")   // <img>
+            $imgElement.src = "assets/images/city2.jpg";   // <img src="">
+            $imgElement.width = 200;   // <img src="" width="">
+
+            document.querySelector("#img-container").appendChild($imgElement);
+        }
+    </script>
+
+    
+    <hr>
+
+    <h3>복수의 노드 생성 및 추가</h3>
+
+    <ul id="food1">
+        <li>김치찌개</li>
+    </ul>
+
+    <button onclick="createMultipleNodes();">복수의 노드 생성 및 추가</button>
+
+    <script>
+        function createMultipleNodes() {
+            const foodList = ["된장찌개", "떡볶이", "순대국"];
+
+            // 비효율 -> 리페인트 현상 발생
+            // 리페인트: 브라우저가 DOM 변경 후 화면에 시각적으로 반영하는 과정
+            // appendChild를 3번 호출하여 화면을 3번 갱신 -> 성능 저하의 가능성
+            // foodList.forEach((food) => {
+            //     const $liElement = document.createElement("li");   // li 요소 생성
+            //     $liElement.innerText = food;   // 텍스트 설정
+
+            //     document.querySelector("#food1").appendChild($liElement);
+            // })
+
+
+            // 효율적인 방법 -> DocumentFragment(가상의 노드) 사용
+            const fragment = document.createDocumentFragment();
+            foodList.forEach((food) => {
+                const $liElement = document.createElement("li");   // li 요소 생성
+                $liElement.innerText = food;   // 텍스트 설정
+
+                fragment.appendChild($liElement);
+            })
+
+            // 리페인트 1회 -> fragment를 DOM에 한 번만 추가
+            document.querySelector("#food1").appendChild(fragment);
+        }
+    </script>
+
+
+    <hr>
+
+    <!-- 
+    📌노드 삽입
+    Node.prototype.appendChild(childNode) : 인수로 전달받은 노드를 appendChild 메서드를 호출한 노드의 마지막 자식 노드로 추가
+    Node.prototype.insertBefore(newNode, childNode) : 첫 번째 인수로 전달받은 노드를 두 번째 인수로 전달 받은 노드 앞에 삽입
+    두 번째 인수로 전달 받은 노드는 반드시 insertBefore 메서드를 호출한 노드의 자식 노드여야한다.
+     -->
+
+    
+    <h3>노드 삽입</h3>
+
+    <ul id="drink2">
+        <li>커피</li>
+    </ul>
+
+    <script>
+        const $drink2 = document.gerElementById("drink2");
+        const $li2 = document.createElement('li');
+        $li.textContent = '콜라';
+
+        $drink2.appendChild($li2);
+
+        const $li3 = document.createElement('li');
+        $li3.textContent = '우유';
+
+        $drink2.insertBefore($li3, $drink2.lastElementChild);
+
+        const $li4 = document.createElement('li');
+        $li.textContent = '사이다';
+
+        // 두 번째 인자가 null이면 appendChild처럼 마지막 자식 노드로 추가
+        $drink2.insertBefore($li4, null);
+    </script>
+    
+
+    <hr>
+
+     <!-- 
+    📌노드 이동
+    DOM에 이미 존재하는 노드를 appendChild, insertBefore 메서드를 사용하여 DOM에 다시 추가하면
+    현재 위치에서 노드를 제거하고 새로운 위치에 노드를 추가하는 노드 이동이 발생한다.
+     -->
+ 
+    
+    <h3>노드 이동</h3>
+
+    <ul id="food2">
+        <li>파스타</li>
+        <li>치킨</li>
+    </ul>
+
+    <script>
+        const $food2 = document.getElementById('food2');
+
+        const [$pasta, $chicken] = $food2.children;
+        console.log($food2.children);
+        console.log($food2.children[0]);
+
+        // const $pasta = $food2.firstElementChild;
+        // const $chicken = $food2.lastElementChild;
+
+        $drink2.appendChild($pasta);
+        $drink2.insertBefore($chicken, $pizza);
+    </script>
+
+
+    <hr>
+
+     <!-- 
+        📌노드 교체, 삭제
+        1. Node.prototype.replaceChild(newChild, oldChild) 
+            → 호출한 노드의 자식 노드 중 oldChild 노드를 newChild 노드로 교체
+            → oldChild 노드는 DOM에서 제거됨 
+
+        2. Node.prototype.removeChild(child) 
+            → 호출한 노드의 자식 노드를 찾아 DOM에서 제거
+
+        3. Element.prototype.remove()
+            → 호출한 노드를 DOM에서 제거
+    -->
+
+
+    <h2>노드 교체</h2>
+
+    <ul id="drink3">
+        <li>커피</li>
+        <li>사이다</li>
+    </ul>
+
+    <script>
+        const $drink3 = document.getElementById('drink3');
+        const $doffee = $drink3.firstElementChild;
+
+        const $newChild = document.createElement('li');
+        $newChild.textContent = '콜라';
+
+        $drink3.replaceChild($newChild, $coffee);
+    </script>
+
+
+    <hr>
+
+
+    <h2>노드 삭제</h2>
+
+    <style>
+        #remove {
+            width: 200px;
+            height: 100px;
+            background: coral;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #item1 {
+            background: olive;
+        }
+
+        #item2 {
+            background: darkkhaki;
+        }
+
+        #item3 {
+            background: navajowhite;
+        }
+    </style>
+
+    <div id="remove">
+        <span id="item1">item1</span>
+        <span id="item2">item2</span>
+        <span id="item3">item3</span>
+    </div>
+
+    <button onclick="removeNodeTest();">노드 삭제(remove)</button>
+
+    <script>
+        function removeNodeTest() {
+            document.querySelector("#item2").remove();
+        }
+    </script>
+
+
+    <ul id="food3">
+        <li>파스타</li>
+        <li>젤리</li>
+    </ul>
+
+    <button onclick="removeFood();">마지막 음식 삭제</button>
+
+    <script>
+        function removeFood() {
+            const $food3 = document.getElementById('food3');
+
+            $food3.removeChild($food3.lastElementChild);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_dom-mission</title>
+</head>
+<body>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          max-width: 500px;
+          margin: 50px auto;
+          padding: 20px;
+        }
+
+        .box {
+          padding: 15px;
+          margin: 10px 0;
+          border: 2px solid #ddd;
+          border-radius: 5px;
+          background-color: #f9f9f9;
+        }
+
+        .highlight {
+          background-color: #ffffcc;
+          border-color: #ffcc00;
+        }
+
+        .item {
+          padding: 8px;
+          margin: 5px 0;
+          background-color: #e9ecef;
+          border-left: 3px solid #007bff;
+        }
+
+        button {
+          padding: 10px 20px;
+          margin: 5px;
+          background-color: #007bff;
+          color: white;
+          border: none;
+          border-radius: 3px;
+          cursor: pointer;
+        }
+
+        button:hover {
+          background-color: #0056b3;
+        }
+    </style>
+        
+    <script>
+        function box() {
+            const $div = document.querySelectorAll(".box")
+        
+            $div.forEach((div, idx) => {
+                div.style.backgroundColor = "pink";
+                div.innerText = "선택된 박스" + (idx + 1);
+            })
+        }
+
+        function greenItem() {
+            const $div = document.querySelectorAll(".item")
+
+            $div.forEach((div, idx) => {
+                div.style.backgroundColor = "lightgreen";
+                div.style.borderLeft = "3px solid green";
+                div.innerText = "새로운 아이템" + (idx + 1);
+            })
+        }
+
+        function pink() {
+            const $div = document.querySelectorAll(".highlight")
+
+            $div.forEach(div => {
+                div.style.backgroundColor = "pink";
+                div.style.fontWeight = "bold";
+                div.innerHTML += " (수정됨)";
+            })
+        }
+    </script>
+
+    <div>
+        <div class="box">첫 번째 박스</div>
+        <div class="box">두 번째 박스</div>
+        <div class="box highlight">세 번째 박스</div>
+
+        <div class="item">첫 번째 아이템</div>
+        <div class="item">두 번째 아이템</div>
+        <div class="item">세 번째 아이템</div>
+        <div class="item">네 번째 아이템</div>
+
+        <br>
+        <div class="highlight">하이라이트된 문단입니다. </div>
+        <br>
+    </div>
+
+    <button onclick="box();">모든 박스 선택</button>
+    <button onclick="greenItem();">모든 아이템 선택</button>
+    <button onclick="pink();">하이라이트 요소들 선택</button>
+</body>
+</html>

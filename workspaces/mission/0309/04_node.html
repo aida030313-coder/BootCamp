@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+      .old {
+        background: red;
+        color: white;
+        padding: 10px;
+        margin: 5px;
+      }
+      .new {
+        background: green;
+        color: white;
+        padding: 10px;
+        margin: 5px;
+      }
+    </style>
+
+    <script>
+        function topChange() {
+            const target = document.querySelector(".very");
+            const $newDiv = document.createElement('div');
+
+            $newDiv.className = 'new';
+            $newDiv.innerText = "새로운 요소로 교체됨";
+            target.replaceWith($newDiv);
+        }
+
+        function txtChange() {
+            const target = document.querySelector(".text");
+            const $new = document.createElement('p');
+
+            $new.innerText = "단순 텍스트로 교체됨";
+            target.replaceWith($new);
+        }
+
+        function htmlChange() {
+            const target = document.querySelector(".last");
+
+            target.insertAdjacentHTML(
+                "beforebegin",
+                '<div class="new"><b>HTML 요소로 교체됨</b></div>'
+            );
+
+            target.remove();
+        }
+    </script>
+
+    <div class="very old">교체될 요소 1</div>
+    <div class="text old">교체될 요소 2</div>
+    <div class="last old">교체될 요소 3</div>
+
+    <button onclick="topChange();">요소로 교체</button>
+    <button onclick="txtChange();">텍스트로 교체</button>
+    <button onclick="htmlChange();">HTML로 교체</button>
+</body>
+</html>

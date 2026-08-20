@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+    * <audio></audio>
+    1) 오디오 태그
+    2) 인라인 요소
+    3) 형식
+        <audio [controls] [autoplay] [loop] [muted]>
+          <source type="" src="">
+          브라우저가 audio 태그를 지원하지 않을 경우 대체 텍스트 문구
+        </audio>
+    4) 주요 속성
+        → src      : 오디오 파일 경로
+        → autoplay : 자동 재생 여부     
+        → loop     : 반복 재생 여부
+        → muted    : 음소거 여부
+        → controls : 오디오 컨트롤 패널(재생, 중지, 소리조절 등) 노출 여부
+    5) 오디오의 content-type (MIME type)
+        → audio/wav
+        → audio/mp3
+        → audio/ogg
+    6) 참고 : https://www.w3schools.com/html/html5_audio.asp
+  -->
+
+  <audio controls autoplay loop muted>
+    <source type="audio/mp3" src="assets/audios/major.mp3">
+  </audio>
+  
+  <!--
+    * <video></video>
+    1) 비디오 태그
+    2) 인라인 요소
+    3) 형식
+      <video [controls] [autoplay] [loop] [muted] width="" height="" poster="">
+          <source type="" src="">
+      </video>
+    4) 주요 속성
+        → src      : 비디오 파일 경로
+        → autoplay : 자동 재생 여부     
+        → loop     : 반복 재생 여부
+        → muted    : 음소거 여부
+        → controls : 비디오 컨트롤 패널(재생, 중지, 소리조절 등) 노출 여부
+        → width    : 비디오 너비
+        → height   : 비디오 높이
+        → poster   : 썸네일 이미지 파일 경로
+    5) 비디오의 content-type (MIME type)
+        → video/mp4
+        → video/webm
+        → video/ogg
+  -->
+
+  <video controls loop muted width="400" height="200" poster="assets/images/cat.png">
+    <source type="video/mp4" src="assets/videos/video1.mp4">
+  </video>
+</body>
+</html>

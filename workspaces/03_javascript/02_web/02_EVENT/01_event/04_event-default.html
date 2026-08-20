@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        const $ = (selector) => document.querySelector(selector);
+    </script>
+</head>
+<body>
+    <!-- 
+    📌 기본 이벤트 (default event)
+    1. 특정 DOM 객체는 기본 이벤트를 이미 가지고 있음 
+    2. 주요 디폴트 이벤트
+      1) <a> 태그는 click 하면 href 속성으로 이동함 
+      2) <form> 태그는 submit 하면 action 속성으로 입력 폼 요소의 데이터를 전송함 
+    3. 이벤트 객체의 preventDefault() 메소드를 호출하면 디폴트 이벤트 동작을 막을 수 있음
+    -->
+
+    <h2>디폴트 이벤트</h2>
+
+    <a id="naver-link" href="http://www.naver.com" target="_blank">네이버로 이동</a>
+    <br>
+
+    <form id="form" action="/server/test.do" method="get">
+        아이디: <input type="text" name="userId" id="userId"><br>
+        비밀번호: <input type="password" name="userPwd" id="userPwd"><br>
+        비밀번호 확인: <input type="password" id="checkPwd"><br>
+        <button type="submit">제출</button>
+    </form>
+
+
+    <script>
+        // 링크 클릭시 "이동하시겠습니까?" => "아니" => 링크 이동 막기
+        $("#naver-link").addEventListener('click', (e) => {
+            if(!confirm("정말 페이지를 이동하시겠습니까?")){    // 부정 주기(!)
+                e.preventDefault(); // 기본 이벤트 작동 방법
+            }
+        }) 
+
+        $('#form').addEventListener('submit', (e) => {
+            if($('#userPwd').value !== $('#checkPwd').value) {
+                alert('두 비밀번호가 일치하지 않습니다!! 다시 입력해주세요.');
+                $('#checkPwd').focus();
+                e.preventDefault();
+            }
+        })
+    </script>
+
+</body>
+</html>

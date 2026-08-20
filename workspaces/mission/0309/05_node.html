@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+      .container {
+        border: 2px solid blue;
+        padding: 10px;
+        margin: 10px;
+      }
+      .old {
+        background: red;
+        color: white;
+        padding: 5px;
+        margin: 3px;
+      }
+      .new {
+        background: green;
+        color: white;
+        padding: 5px;
+        margin: 3px;
+      }
+    </style>
+
+    <script>
+        function one() {
+            const parent = document.querySelector(".container");
+            const child = document.querySelector(".one");
+            const $divOne = document.createElement('div');
+
+            $divOne.className = 'new';
+            $divOne.innerText = "새로운 첫 번째 자식";
+            parent.replaceChild($divOne, child)
+        }
+
+        function two() {
+            const parent = document.querySelector(".container");
+            const child = document.querySelector(".two");
+            const $divTwo = document.createElement('span');
+
+            $divTwo.className = 'new';
+            $divTwo.innerText = "새로운 두 번째 자식";
+            parent.replaceChild($divTwo, child)
+        }
+
+        function three() {
+            const parent = document.querySelector(".container");
+            const child = document.querySelector(".three");
+            const $divThree = document.createElement('h2');
+
+            $divThree.className = 'new';
+            $divThree.innerText = "새로운 세 번째 자식";
+            parent.replaceChild($divThree, child)
+        }
+    </script>
+
+    <div class="container">
+        <div class="one old">교체될 자식 1</div>
+        <div class="two old">교체될 자식 2</div>
+        <div class="three old">교체될 자식 3</div>
+    </div>
+
+    <button onclick="one();">첫 번째 교체</button>
+    <button onclick="two();">두 번째 교체</button>
+    <button onclick="three();">세 번째 교체</button>
+</body>
+</html>

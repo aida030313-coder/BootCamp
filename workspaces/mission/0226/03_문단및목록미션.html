@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>문단 스타일과 목록 스타일 실습 미션</title>
+    <style>
+
+        .mission-container {
+            background: beige;
+        }
+
+        .result h2 {
+            text-align: center;
+            text-decoration: underline;
+        }
+
+        .result h3 {
+            background: brown;
+            color: whitesmoke;
+        }
+
+        .trip-intro {
+            background: burlywood;
+        }
+
+        .main-items {
+            list-style-type: square;
+        }
+
+        .sub-items {
+            background: yellow;
+        }
+
+        .schedule {
+            list-style-type: upper-roman;
+        }
+
+        .memo {
+            text-align: right;
+            text-decoration: line-through;
+            color: olive;
+        }
+    </style>
+</head>
+<body>
+    <div class="mission-container">
+        <div class="result">
+            <h2>여행 계획 작성하기</h2>
+            
+            <p class="trip-intro">
+                이번 여름 휴가는 제주도로 떠나기로 했습니다. 맛있는 음식과 아름다운 자연을 즐기면서 
+                특별한 추억을 만들고 싶습니다. <br>가족들과 함께하는 3박 4일의 여행이 될 것 같아 설렘이 가득합니다.
+                완벽한 여행을 위해 꼼꼼히 계획을 세워보았습니다.
+            </p>
+
+            <hr>
+
+            <h3> 준비물 목록</h3>
+            <ul class="main-items">
+                <li>의류
+                    <ul class="sub-items">
+                        <li>여름옷 3벌</li>
+                        <li>수영복</li>
+                        <li>모자</li>
+                    </ul>
+                </li>
+                <li>전자기기
+                    <ul class="sub-items">
+                        <li>카메라</li>
+                        <li>보조배터리</li>
+                        <li>충전기</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <hr>
+
+            <h3> 일정표</h3>
+            <ol class="schedule">
+                <li><strong>09:00</strong> - <em>공항</em> 도착</li>
+                <li><strong>10:30</strong> - <em>제주 민속촌</em> 관람</li>
+                <li><strong>13:00</strong> - <em>중문 해수욕장</em> 방문</li>
+                <li><strong>16:00</strong> - <em>성산일출봉</em> 등반</li>
+                <li><strong>19:00</strong> - <em>흑돼지 거리</em> 저녁 식사</li>
+            </ol>
+
+            <br>
+
+            <p class="memo">
+                우산 챙기기 (기상예보 맑음)
+            </p>
+        </div>
+    </div>
+
+</body>
+</html> 

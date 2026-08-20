@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .img {
+            width: 320px;
+            height: 320px;
+            top: 16px;
+            left: 16px;
+            background-image: url(assets/11_img.jpg);
+            box-sizing: border-box; /* 패딩이 박스 크기에 영향을 주지 않도록 추가 */
+
+            background-position: -105px -297px;
+            padding: 16px;
+            position: relative;
+        }
+
+        .text {
+            width: 161px;
+            height: 29px;
+            
+            font-weight: 700;
+            font-size: 24px;
+            color: #FFFFFF;
+
+            display: flex;
+            align-items: center;
+        }
+
+        .circle1, .circle2, .circle3 {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .circle1 {
+            background: #E3FF92;
+            top: 16px;
+            left: 272px;
+        }
+
+        .circle2 {
+            background: #92F8FF;
+            top: 272px;
+            left: 16px;
+        }
+
+        .circle3 {
+            background: #FF9292;
+            top: 272px;
+            left: 272px;
+        }
+    </style>
+
+    <div class="img">
+        <div class="text">인테리어 디자인</div>
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .size-test {
+            border: 2px solid darkseagreen;
+        }
+
+        #test1 {
+            width: 800px;
+            height: 200px;
+        }
+        #test2 {
+            width: 80%;
+            height: 200px;
+        }
+
+        .block {
+            width: 150px;
+            height: 150px;
+            border: 1px solid saddlebrown;
+            color: blanchedalmond;
+            padding-top: 20px;
+            padding-left: 20px;
+        }
+
+        .area1 {
+            background: orangered;
+        }
+        .area2 {
+            background: orange;
+        }
+        .area3 {
+            background: yellow;
+        }
+        .area4 {
+            background: olivedrab;
+        }
+        .area5 {
+            background: steelblue;
+        }
+
+        .block-test1 {
+            display: inline;
+        }
+        .block-test2 {
+            display: inline-block;
+            margin-left: -6px;
+        }
+        .block-test3 {
+            display: block;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>레이아웃 스타일</h1>
+    <h3>width와 height</h3>
+    <p>내용이 차지하고 있는 영역의 크기를 조절할 수 있는 속성</p>
+    <h4>고정 크기</h4>
+    <div id="test1" class="size-test"></div>
+    <h4>고정 크기</h4>
+    <div id="test2" class="size-test"></div>
+
+    <hr>
+
+    <h3>화면 배치 방법 변경</h3>
+    <p>블럭 요소를 인라인 요소로 변경</p>
+    <pre>display: inline -> 인라인 요소로 변경되면서 width, height 속성이 무시된다. </pre>
+    <div class="block block-test1 area1">첫 번째 영역</div>
+    <div class="block block-test1 area2">두 번째 영역</div>
+    <div class="block block-test1 area3">세 번째 영역</div>
+    <div class="block block-test1 area4">네 번째 영역</div>
+    <div class="block block-test1 area5">다섯 번째 영역</div>
+
+    <p>블럭 요소를 인라인 블럭 요소로 변경</p>
+    <pre>display: inline-block -> 영역은 인라인 요소로 변경되지만 내용은 블럭 요소가 되어 width, height 속성을 설정할 수 있다. </pre>
+    <div class="block block-test2 area1">첫 번째 영역</div>
+    <div class="block block-test2 area2">두 번째 영역</div>
+    <div class="block block-test2 area3">세 번째 영역</div>
+    <div class="block block-test2 area4">네 번째 영역</div>
+    <div class="block block-test2 area5">다섯 번째 영역</div>
+
+    <p>인라인 요소를 블럭 요소로 변경</p>
+    <pre>display: block -> 인라인 요소를 블럭 요소로 변경하면 width, height 값 지정할 수 있고 세로로 쌓인다.</pre>
+    <span class="block block-test3 area1">첫 번째 영역</span>
+    <span class="block block-test3 area2">두 번째 영역</span>
+    <span class="block block-test3 area3">세 번째 영역</span>
+    <span class="block block-test3 area4">네 번째 영역</span>
+    <span class="block block-test3 area5">다섯 번째 영역</span>
+
+</body>
+</html>

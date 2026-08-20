@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root1"></div>
+
+    <script type="text/babel">
+        
+        const root1 = ReactDOM.createRoot(document.getElementById('root1'))
+
+
+        // 연습1) 아래 변수에 저장된 값을 <div> 태그로 화면에 표시하세요.
+        const name = 'Tom';
+        const num1 = <div>{name}</div>
+
+
+        // 연습2) 아래 객체에 저장된 값 중 model 속성만 <div> 태그로 화면에 표시하세요.
+        const car = {
+          model: 'sorento',
+          price: 4000,
+        }
+
+        const num2 = <div>{car.model}</div>
+
+
+        // 연습3) 아래 score 값이 60 이상이면 "합격", 아니면 "불합격"을 <div> 태그로 화면에 표시하세요.
+        const score = 80;
+
+        const num3 = <div> {
+            score >= 60
+            ? '합격' : '불합격'
+        } </div>
+
+
+        // 연습4) 아래 변수에 저장된 값이 없으면 "값없음", 값이 있으면 저장된 값을 <div> 태그로 화면에 표시하세요.
+        let value;
+
+        const num4 = <div> {
+            value
+            ? value : '값없음'
+        } </div>
+
+
+        // 연습5) 아래 color 값이 "r"이면 "red", "g"이면 "green", "b"이면 "blue" 배경색을 <div> 태그에 적용해 화면에 표시하세요.
+        //       (100 x 100 크기)
+        const color = 'r';
+
+        let rgb = '';
+
+        if (color === 'r') rgb = 'red';
+        else if (color === 'g') rgb = 'green';
+        else if (color === 'b') rgb = 'blue';
+
+        const style = {
+            background: rgb,
+            width: 100,
+            height: 100
+        }
+
+        const num5 = <div style={style}></div>
+    
+        root1.render(
+            <>
+            {num1} {num2} {num3} {num4} {num5}
+            </>
+        );
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .home {
+            width: 160px;
+            height: 240px;
+            background: #CA785C;
+            border-radius: 8px;
+
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            gap: 4px;
+        }
+
+        .picture {
+            width: 160px;
+            height: 172px;
+            background-image: url(assets/08_img.jpg);
+
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            background-position: -221px -471px;
+
+            position: absolute;
+        }
+
+        .text1 {
+            width: 83px;
+            height: 19px;
+            font-weight: 700;
+            font-size: 16px;
+            color: #FFFFFF;
+
+            position: absolute;
+            top: 180px;
+            padding-left: 8px;
+
+            display: flex;
+            align-items: center;    /* 세로 중앙 정렬 */
+        }
+
+        .text2, .text3 {
+            font-weight: 700;
+            font-size: 14px;
+            padding-bottom: 8px;
+            color: #FFFFFF;
+        }
+
+        .text2 {
+            width: 39px;
+            height: 17px;
+            
+            position: absolute;
+            top: 215px;
+            padding-left: 8px;
+        }
+
+        .text3 {
+            width: 76px;
+            height: 17px;
+
+            position: absolute;
+            top: 215px;
+            padding-left: 76px;
+        }
+    </style>
+
+    <div class="home">
+        <div class="picture"></div>
+        <div class="textBox">
+            <div class="text1">인테리어란?</div>
+            <div class="text2">김작가</div>
+            <div class="text3">2024.01.01</div>
+        </div>
+    </div>
+</body>
+</html>

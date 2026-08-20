@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: #d93e137b;
+        }
+
+        #div-bg {
+            width: 50%;
+            background: whitesmoke;
+        }
+
+        .div-test {
+            background-color: bisque;
+            padding: 20px;
+            width: 20%;
+            border: 5px dashed darkcyan;
+            float: right;
+        }
+
+        #div1 {
+            background-clip: border-box;
+            /* 테두리까지 배경 칠함 */
+        }
+
+        #div2 {
+            background-clip: padding-box;
+            /* 테두리 제외 */
+        }
+
+        #div3 {
+            background-clip: content-box;
+            /* 테두리 + 패딩 제외 */
+        }
+
+        .clearfloat {
+            clear: both;
+        }
+
+        #bg-img {
+            background-image: url("assets/images/fruit1.jpg");
+            width: 70%;
+            height: 1600px;
+            border: 4px solid chartreuse;
+            background-repeat: no-repeat;
+
+            background-size: cover;
+            background-size: contain;
+            background-size: auto;
+
+            background-attachment: fixed;
+            background-attachment: scroll;
+
+            background-position: 50% 50%;
+            background-position: 30px 50px;
+            background-position: right;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+    - rgb(빨강, 초록, 파랑)
+    - 각 값의 범위 : 0 ~ 255
+    - 숫자가 클수록 해당 색이 강해짐
+    - 빛의 3원색을 섞는 방식
+
+
+    [ HSL ]
+
+    - hsl(색상, 채도, 명도)
+
+    1) Hue (색상) : 0 ~ 360도
+    0   = 빨강
+    120 = 초록
+    240 = 파랑
+
+        2) Saturation (채도) : 0% ~ 100%
+        0%   = 회색 (무채색)
+        100% = 선명한 색
+
+        3) Lightness (명도) : 0% ~ 100%
+        0%   = 검정
+        50%  = 기본 색상
+        100% = 흰색
+
+
+        [ 16진수 (Hex) ]
+
+        - 형식 : #RRGGBB
+        - RR(빨강), GG(초록), BB(파랑)
+        - 00 ~ FF (00 = 0, FF = 255)
+
+        기본 색상 예시
+
+        #000000  → 검정
+        #FFFFFF  → 흰색
+        #FF0000  → 빨강
+        #00FF00  → 초록
+        #0000FF  → 파랑
+    -->
+
+    <h1>배경색과 배경 이미지</h1>
+    <h3>div 배경 테스트</h3>
+    <p>div 영역을 설정하는 경우 배경색을 지정하기 위해서는 div에 배경색을 별도로 지정해야 한다.</p>
+    <div id="div-bg">
+        It is a long established fact that a reader will be distracted by the readable content of a page when looking at
+        its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
+        opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing
+        packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum'
+        will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by
+        accident, sometimes on purpose (injected humour and the like).
+    </div>
+
+    <h3>배경 적용 범위 조정</h3>
+    <p>div 영역의 배경 적용 범위를 지정할 때 background-clip 속성을 사용한다.</p>
+    <div id="div-test" id="div1">
+        It is a long established fact that a reader will be distracted by the readable content of a page when looking at
+        its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
+        opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing
+        packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum'
+        will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by
+        accident, sometimes on purpose (injected humour and the like).
+    </div>
+    <div id="div-test" id="div2">
+        It is a long established fact that a reader will be distracted by the readable content of a page when looking at
+        its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
+        opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing
+        packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum'
+        will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by
+        accident, sometimes on purpose (injected humour and the like).
+    </div>
+    <div id="div-test" id="div3">
+        It is a long established fact that a reader will be distracted by the readable content of a page when looking at
+        its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
+        opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing
+        packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum'
+        will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by
+        accident, sometimes on purpose (injected humour and the like).
+    </div>
+
+    <hr class="clearfloat">
+
+    <h3>배경 이미지 테스트</h3>
+    <p>background-image 속성을 이용하여 배경 사진을 넣을 수 있다.</p>
+    <div id="bg-img"></div>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_dom-mission</title>
+</head>
+<body>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 20px;
+        }
+
+        p {
+          padding: 10px;
+          margin: 5px 0;
+          border: 1px solid #ddd;
+          border-radius: 3px;
+        }
+
+        li {
+          padding: 5px;
+          margin: 3px 0;
+        }
+
+        button {
+          padding: 10px 20px;
+          margin: 5px;
+          background-color: #007bff;
+          color: white;
+          border: none;
+          border-radius: 3px;
+          cursor: pointer;
+        }
+
+        button:hover {
+          background-color: #0056b3;
+        }
+    </style>
+
+    <script>
+        function box() {
+            const $p = document.querySelectorAll("#box")
+        
+        $p.forEach((p, idx) => {
+            p.style.backgroundColor = "beige";
+            p.innerText = "선택된 문단" + (idx + 1);
+        })
+        }
+
+        function blue() {
+            const $list = document.querySelectorAll("#list > li");
+
+            $list.forEach((li, idx) => {
+                li.innerText = "새로운 목록 항목" + (idx + 1);
+                li.style.color = "lightblue";
+                li.style.fontWeight = "bold";
+            })
+        }
+
+        function one() {
+            const $firstP = document.querySelector(".first");
+        
+            if ($firstP) {
+                $firstP.style.backgroundColor = "lightgreen";
+                $firstP.innerText = "첫 번째 문단만 선택되었습니다!";
+            }
+        }
+    </script>
+
+    <p id="box" class="first">첫 번째 문단입니다.</p>
+    <p id="box">두 번째 문단입니다.</p>
+    <p id="box">세 번째 문단입니다.</p>
+
+    <ul id="list">
+        <li>첫 번째 목록</li>
+        <li>두 번째 목록</li>
+        <li>세 번째 목록</li>
+        <li>네 번째 목록</li>
+    </ul>
+
+    <button onclick="box();">모든 문단 선택</button>
+    <button onclick="blue();">모든 목록 선택</button>
+    <button onclick="one();">첫 번째 문단만 선택</button>
+</body>
+</html>

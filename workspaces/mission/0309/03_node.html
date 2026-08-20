@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        #target {
+          border: 2px solid blue;
+          padding: 10px;
+          margin: 10px;
+        }
+
+        .before {
+          background: red;
+          color: white;
+        }
+
+        .after {
+          background: green;
+          color: white;
+        }
+
+        .begin {
+          background: orange;
+        }
+
+        .end {
+          background: purple;
+          color: white;
+        }
+    </style>
+
+    <div id="target">
+        <p>기존 내용</p>
+    </div>
+
+    <script>
+        const target = document.querySelector('#target');
+
+        // appendChild에 직접 HTML 태그 적기 불가능
+        // 전용 매소드 insertAdjacentHTML 사용
+        target.insertAdjacentHTML(
+            "beforebegin",
+            '<div class="before">beforebegin - 앞 형제</div>'
+        );
+
+        target.insertAdjacentHTML(
+            "afterend",
+            '<div class="after">afterend - 뒤 형제</div>'
+        );
+
+        target.insertAdjacentHTML(
+            "afterbegin",
+            '<div class="begin">afterbegin - 첫 자식</div>'
+        );
+
+        target.insertAdjacentHTML(
+            "beforeend",
+            '<div class="end">beforeend - 마지막 자식</div>'
+        );
+    </script>
+</body>
+</html>

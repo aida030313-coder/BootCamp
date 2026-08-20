@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+        .main {
+            width: 332px;
+            height: 100px;
+            border-radius: 8px;
+            background: #FFE4E4;
+
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            display: flex;
+
+            font-family: 'Inter', sans-serif;
+        }
+
+        .pink {
+            width: 160px;
+            height: 100px;
+            border-radius: 8px;
+            background: #FFB9B9;
+
+            display: flex;
+            flex-direction: row;
+        }
+
+        .right {
+            width: 172px;
+            height: 100px;
+
+            left: 160px;
+            padding: 8px;
+            box-sizing: border-box;
+            gap: 8px;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .small {
+            width: 96px;
+            height: 19px;
+            background: #FFB9B9;
+            border-radius: 2px;
+            gap: 10px;
+
+            display: flex;
+            flex-direction: column;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hi {
+            width: 48px;
+            height: 15px;
+            font-weight: 400;
+            font-size: 12px;
+            color: #FFFFFF;
+        }
+
+        .day {
+            width: 123px;
+            height: 19px;
+
+            font-weight: 400;
+            font-size: 16px;
+        }
+
+        .weather {
+            width: 113px;
+            height: 17px;
+
+            font-weight: 400;
+            font-size: 14px;
+            color: #8B8B8B;
+        }
+
+        .hi, .day, .weather {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+
+    <div class="main">
+        <div class="pink"></div>
+        <div class="right">
+            <div class="small">
+                <div class="hi">반가워요!</div>
+            </div>
+            <div class="day">좋은하루보내세요!</div>
+            <div class="weather">날씨가 좋네요!</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_dom-mission</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .box {
+            padding: 20px;
+            margin: 10px 0;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+          }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+          background-color: #0056b3;
+        }
+    </style>
+
+    <script>
+        function pink() {
+            var element = document.getElementById("first")
+
+            element.innerText = "첫 번째 박스를 찾았습니다."
+            element.style.backgroundColor = "pink"
+        }
+
+        function green() {
+            var element = document.getElementById("second")
+
+            element.innerText = "두 번째 박스를 찾았습니다."
+            element.style.backgroundColor = "lightgreen"
+        }
+
+        function text() {
+            var element = document.getElementById("txt")
+
+            element.innerText = "ID로 요소를 성공적으로 찾았습니다."
+            element.style.color = "lightblue"
+            element.style.fontWeight = "bold"
+            element.style.fontSize = "20px"
+        }
+    </script>
+
+    <div class="box" id="first">첫 번째 박스입니다.</div>
+    <div class="box" id="second">두 번째 박스입니다.</div>
+
+    <p id="txt">여기에 메시지가 표시됩니다.</p>
+
+    <button id="one" onclick="pink();">첫 번째 박스 선택</button>
+    <button id="two" onclick="green();">두 번째 박스 선택</button>
+    <button id="three" onclick="text();">메시지 선택</button>
+</body>
+</html>

@@ -1,0 +1,31 @@
+  .product-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: white;
+  }
+
+  .product-title {
+    margin-top: 0;
+  }
+
+  .product-description {
+    color: #666;
+    font-size: 14px;
+  }
+
+  .product-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2563eb;
+  }
+
+  .product-add-button {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+  }

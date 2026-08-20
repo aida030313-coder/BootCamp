@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>03. class를 이용한 요소 노드 취득</h1>
+    <pre>
+        <b>Document.prototype/Element.prototype.getElementsByClassName 메서드는
+            인수로 전달한 class 어트리뷰트 값을 갖는 모든 요소 노드들을 탐색하여 반환한다.
+        </b>
+    </pre>
+
+    <ul id="available">
+        <li class="drink coffee">커피</li>
+        <li class="drink coke">콜라</li>
+        <li class="drink milk">우유</li>
+    </ul>
+    
+    <ul id="unavailable">
+        <li class="drink soju">소주</li>
+        <li class="drink beer">맥주</li>
+    </ul>
+
+    <script>
+        // Document.prototype.getElementsByClassName
+        // DOM 전체에서 class 값이 drink인 요소 노드를 모두 탐색하여 반환
+        const $drink = document.getElementsByClassName('drink');
+        console.log($drink);
+        console.log($drink.length);
+        
+        [...$drink].forEach(drink => drink.style.color = 'orange');
+
+        const $coffee = document.getElementsByClassName('drink coffee');
+        console.log($coffee);
+
+        
+        // Document.prototype.getElementsByClassName
+        // $available의 자식 노드들 중 class 값이 drink인 요소 노드를 모두 탐색하여 반환
+        const $available = document.getElementById('available');
+        console.log($available);
+        const $availableDrinks = $available.getElementsByClassName('drink');
+        console.log($availableDrinks);
+
+        [...$availableDrinks].forEach(drink => drink.style.color = 'green');
+
+        const $noElement = $available.getElementsByClassName('soju');
+        console.log($noElement);
+    </script>
+</body>
+</html>

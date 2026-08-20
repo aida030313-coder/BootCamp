@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼 관련 태그 미션</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend><b> 기본 정보 </b></legend>
+            <label>아이디: </label><input type="text" name="id" min="4" max="12"><br><br>
+            <label>비밀번호: </label><input type="password" name="userPwd"><br><br>
+            <label>이메일: </label><input type="email" name="email"><br><br>
+        </fieldset>
+    </form>
+
+    <form>
+        <fieldset>
+            <legend><b> 추가 정보 </b></legend>
+            <label>직업: </label>
+            <select name="job">
+                <option value="choice" selected>선택하세요</option>
+                <option value="student">학생</option>
+                <option value="business">회사원</option>
+                <option value="salesman">자영업자</option>
+                <option value="professional">전문직</option>
+                <option value="etc">기타</option>
+            </select><br><br>
+            <label>관심분야: </label>
+            <input type="checkbox" id="music" value="음악" name="interest">
+            <label for="music">음악</label>
+            <input type="checkbox" id="movie" value="영화" name="interest">
+            <label for="movie">영화</label>
+            <input type="checkbox" id="read" value="독서" name="interest">
+            <label for="read">독서</label>
+            <input type="checkbox" id="workout" value="운동" name="interest">
+            <label for="workout">운동</label>
+            <input type="checkbox" id="travel" value="여행" name="interest">
+            <label for="travel">여행</label>
+        </fieldset>
+    </form>
+
+    <form>
+        <fieldset>
+            <legend><b> 자기소개 </b></legend>
+            <label>자기소개: </label><br>
+            <textarea style="resize: both;" cols="40px" rows="5px"></textarea><br><br>
+            <label>프로필 사진: </label>
+            <input type="file" name="uploadFile">
+        </fieldset>
+    </form>
+
+    <input type="submit" value="전송">
+    <input type="reset" value="취소">
+
+</body>
+</html>

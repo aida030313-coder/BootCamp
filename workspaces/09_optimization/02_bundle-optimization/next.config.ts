@@ -1,0 +1,15 @@
+import type { NextConfig } from "next";
+import widthBundleAnalyzer from '@next/bundle-analyzer'
+
+const nextConfig: NextConfig = {
+  /* config options here */
+};
+
+// 번들 분석기
+const bundleAnalyzer = widthBundleAnalyzer({
+
+  enabled: process.env.ANALYZE  === 'true',   // 빌드 시 ANALYZE 환경변수 true일 경우 번들 분석기 활성화
+  openAnalyzer: true                          // 번들 분석기 활성화 된 채로 빌드 완료 => 분석 결과 페이지 브라우저로 자동 열기
+})
+
+export default bundleAnalyzer(nextConfig);

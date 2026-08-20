@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>실습 2: Flex & Grid 레이아웃</title>
+</head>
+<body class="bg-gray-100 p-10">
+
+  <h1 class="text-3xl font-bold text-center text-gray-800 mb-10">
+    실습 2: Flex & Grid 레이아웃
+  </h1>
+
+  <!-- 
+    ============================================
+    문제 1: Flexbox 프로필 카드
+    ============================================
+    아래 div에 Flexbox 클래스를 추가하여 다음 조건을 만족하세요:
+    
+    조건:
+    1. Flex 컨테이너로 만들기
+    2. 세로축 중앙 정렬
+    3. 자식 요소 간 간격: 6
+    4. 배경색: 흰색
+    5. 패딩: 6
+    6. 모서리: 둥근 모서리 lg
+    7. 그림자: 중간 크기
+    8. 최대 너비: 2xl
+    9. 중앙 정렬
+    10. 하단 마진: 6
+    
+    힌트: 이미지 div는 그대로 두고, 텍스트 div에 flex-1을 추가하면 남은 공간을 차지합니다.
+  -->
+  <h2 class="text-xl font-semibold text-gray-700 mb-4">
+    문제 1: Flexbox 프로필 카드
+  </h2>
+
+  <div class="
+    flex items-center
+    gap-6 bg-white p-6
+    rounded-lg shadow-md
+    max-w-2xl mx-auto
+    mb-6
+  ">
+    <div>
+      <img class="w-20 h-20 rounded-full" src="https://placehold.co/150" alt="Profile">
+    </div>
+    <div class="flex-1">
+      <p class="text-xl font-bold text-gray-900">홍길동</p>
+      <p class="text-gray-600">프론트엔드 개발자</p>
+    </div>
+    <div>
+      <button class="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600">
+        팔로우
+      </button>
+    </div>
+  </div>
+
+  <hr class="border-gray-300 my-10">
+
+  <!-- 
+    ============================================
+    문제 2: Grid 레이아웃
+    ============================================
+    아래 div에 Grid 클래스를 추가하여 다음 조건을 만족하세요:
+    
+    조건:
+    1. Grid 컨테이너로 만들기
+    2. 반응형 그리드:
+       - 모바일: 1열
+       - 태블릿 이상: 2열
+       - 데스크탑 이상: 3열
+    3. 카드 간 간격: 6
+    4. 최대 너비: 6xl
+    5. 중앙 정렬
+  -->
+  <h2 class="text-xl font-semibold text-gray-700 mb-4">
+    문제 2: 반응형 그리드 레이아웃
+  </h2>
+
+  <div class="
+    grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
+    gap-6 max-w-6xl mx-auto
+  ">
+    <!-- 카드 1 -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
+      <h3 class="font-bold text-lg text-gray-900">카드 제목 1</h3>
+      <p class="mt-2 text-gray-600">모바일: 1열, 태블릿: 2열, 데스크탑: 3열</p>
+    </div>
+
+    <!-- 카드 2 -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
+      <h3 class="font-bold text-lg text-gray-900">카드 제목 2</h3>
+      <p class="mt-2 text-gray-600">모바일: 1열, 태블릿: 2열, 데스크탑: 3열</p>
+    </div>
+
+    <!-- 카드 3 -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
+      <h3 class="font-bold text-lg text-gray-900">카드 제목 3</h3>
+      <p class="mt-2 text-gray-600">모바일: 1열, 태블릿: 2열, 데스크탑: 3열</p>
+    </div>
+
+    <!-- 카드 4 -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
+      <h3 class="font-bold text-lg text-gray-900">카드 제목 4</h3>
+      <p class="mt-2 text-gray-600">모바일: 1열, 태블릿: 2열, 데스크탑: 3열</p>
+    </div>
+
+    <!-- 카드 5 -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
+      <h3 class="font-bold text-lg text-gray-900">카드 제목 5</h3>
+      <p class="mt-2 text-gray-600">모바일: 1열, 태블릿: 2열, 데스크탑: 3열</p>
+    </div>
+
+    <!-- 카드 6 -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
+      <h3 class="font-bold text-lg text-gray-900">카드 제목 6</h3>
+      <p class="mt-2 text-gray-600">모바일: 1열, 태블릿: 2열, 데스크탑: 3열</p>
+    </div>
+  </div>
+
+  <hr class="border-gray-300 my-10">
+
+  <!-- 
+    ============================================
+    문제 3: Flexbox 네비게이션 바
+    ============================================
+    아래 nav에 Flexbox 클래스를 추가하여 다음 조건을 만족하세요:
+    
+    조건:
+    1. Flex 컨테이너로 만들기
+    2. 가로축 양쪽 끝 정렬 
+    3. 세로축 중앙 정렬
+    4. 배경색: 흰색 
+    5. 패딩: 세로 4, 가로 6 
+    6. 그림자: 작은 크기 
+    7. 모서리: 둥근 모서리
+    8. 최대 너비: 4xl 
+    9. 중앙 정렬
+  -->
+  <h2 class="text-xl font-semibold text-gray-700 mb-4">
+    문제 3: Flexbox 네비게이션 바
+  </h2>
+
+  <nav class="
+    flex justify-between items-center
+    bg-white py-4 px-6 
+    shadow-sm rounded
+    mx-auto
+  ">
+    <div class="text-xl font-bold text-gray-900">
+      로고
+    </div>
+    <div class="flex space-x-4">
+      <a href="#" class="text-gray-600 hover:text-gray-900">홈</a>
+      <a href="#" class="text-gray-600 hover:text-gray-900">소개</a>
+      <a href="#" class="text-gray-600 hover:text-gray-900">연락처</a>
+    </div>
+  </nav>
+
+</body>
+</html>

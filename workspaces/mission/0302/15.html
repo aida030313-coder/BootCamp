@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+            margin: 0px;
+            padding: 16px;
+        }
+
+        .login {
+            font-weight: 700;
+            font-size: 24px;
+
+            width: 67px;
+            height: 29px;
+            top: 16px;
+
+            display: flex;
+            align-items: center;
+        }
+
+        .id, .pwd {
+            font-weight: 400;
+            font-size: 16px;
+        }
+
+        .box1, .box2 {
+            width: 278px;
+            height: 40px;
+            border-radius: 8px;
+            border: 1px solid #C3C3C3;
+        }
+
+        .idBox, .pwdBox {
+            width: 278px;
+            height: 67px;
+
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+
+            justify-content: space-between;
+        }
+
+        .idBox {
+            top: 69px;
+        }
+
+        .pwdBox {
+            top: 160px;
+        }
+
+        .id, .pwd {
+            align-items: flex-start;
+        }
+
+        .id {
+            width: 45px;
+            height: 19px;
+        }
+
+        .pwd {
+            width: 59px;
+            height: 19px;
+        }
+
+        .button {
+            width: 278px;
+            height: 48px;
+            border-radius: 8px;
+            background: #17B75E;
+
+            position: absolute;
+            top: 251px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .text {
+            font-weight: 700;
+            font-size: 20px;
+            color: #FFFFFF;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+
+    <div class="login">로그인</div>
+    <div class="idBox">
+        <div class="id">아이디</div>
+        <div class="box1"></div>
+    </div>
+    <div class="pwdBox">
+        <div class="pwd">비밀번호</div>
+        <div class="box2"></div>
+    </div>
+    <div class="button">
+        <div class="text">로그인</div>
+    </div>
+</body>
+</html>

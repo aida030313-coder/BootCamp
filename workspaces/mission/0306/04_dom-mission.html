@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04_dom-mission</title>
+</head>
+<body>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          max-width: 600px;
+          margin: 50px auto;
+          padding: 20px;
+        }
+
+        .container {
+          border: 2px solid #ddd;
+          padding: 20px;
+          margin: 15px 0;
+          border-radius: 8px;
+        }
+
+        .box {
+          padding: 10px;
+          margin: 8px 0;
+          background-color: #f8f9fa;
+          border: 1px solid #dee2e6;
+          border-radius: 4px;
+        }
+
+        .special {
+          background-color: #fff3cd;
+          border-color: #ffeaa7;
+        }
+
+        ul li {
+          padding: 5px;
+          margin: 3px 0;
+        }
+
+        button {
+          padding: 10px 15px;
+          margin: 5px;
+          background-color: #007bff;
+          color: white;
+          border: none;
+          border-radius: 3px;
+          cursor: pointer;
+          font-size: 14px;
+        }
+
+        button:hover {
+          background-color: #0056b3;
+        }
+    </style>
+
+    <script>
+        function red() {
+            var element = document.getElementById("id")
+
+            element.style.color = "red"
+            element.innerText = "ID로 선택된 제목!"
+        }
+
+        function green() {
+            const $p = document.querySelector(".box")
+
+            $p.style.backgroundColor = "lightgreen"
+            $p.innerText = "클래스로 선택된 첫 번째 박스!"
+        }
+
+        function blue() {
+            const $p = document.querySelector("p")
+
+            $p.style.border = "2px solid blue"
+            $p.innerText = "태그로 선택된 첫 번째 p 요소!"
+        }
+
+        function vip() {
+            const $div = document.querySelectorAll(".special")
+
+            $div.forEach((div, idx) => {
+                div.style.color = "brown";
+                div.style.fontWeight = "bold";
+                div.innerText = "특별 클래스 " + (idx + 1) + "번!";
+            })
+        }
+
+        function sky() {
+            const $div = document.querySelector(".box")
+
+            $div.style.backgroundColor = "lightblue"
+            $div.innerText = "첫 번째 컨테이너의 첫 번째 박스!"
+        }
+
+        function pink() {
+            const $div = document.querySelectorAll(".box")
+
+            $div.forEach((div, idx) => {
+                div.style.backgroundColor = "pink";
+                div.innerText = "모든 박스 " + (idx + 1) + "번 변경!";
+            })
+        }
+
+        function dash() {
+            const $div = document.querySelectorAll(".box:not(.special)")
+
+            $div.forEach(div => {
+                div.style.backgroundColor = "lightgreen";
+                div.style.border = "2px dashed green";
+                div.innerText = "복합 선택자로 선택됨!";
+            })
+        }
+
+        function textbox() {
+            var textInput = document.querySelector(".text")
+            var emailInput = document.querySelector(".email")
+
+            textInput.style.backgroundColor = "#fff3cd";
+            textInput.value = "querySelector로 설정된 값"
+
+            emailInput.style.backgroundColor = "lightblue";
+            emailInput.value = "test@email.com";
+        }
+    </script> 
+
+    <div class="container">
+        <h2 id="id">제목 영역</h1>
+        <p class="box">첫 번째 박스</p>
+        <p class="box special">두 번째 박스 (특별)</p>
+        <p class="box">세 번째 박스</p>
+    </div>
+
+    <div class="container">
+        <ul>
+            <li>첫 번째 목록</li>
+            <li class="special">두 번째 목록</li>
+            <li>세 번째 목록</li>
+            <li>네 번째 목록</li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <input class="text" placeholder="텍스트 입력">
+        <input class="email" placeholder="이메일 입력">
+        <button>일반 버튼</button>
+    </div>
+
+    <button onclick="red();">ID로 선택</button>
+    <button onclick="green();">클래스로 선택</button>
+    <button onclick="blue();">태그로 선택</button>
+    <button onclick="vip();">특별 클래스 선택</button>
+    <button onclick="sky();">첫 번째만 선택</button>
+    <button onclick="pink();">모든 박스 선택</button>
+    <button onclick="dash();">복합 선택자</button>
+    <button onclick="textbox();">입력 필드 선택</button>
+</body>
+</html>

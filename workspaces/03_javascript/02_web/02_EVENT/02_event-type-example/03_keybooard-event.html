@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>03. 키보드 이벤트</h1>
+    <h3>키보드 이벤트 종류</h3>
+    <ul>
+        <li>keydown</li>
+        <li>keyup</li>
+    </ul>
+
+    <h3>키보드 이벤트 테스트</h3>
+    <input type="text" placeholder="아무 키나 입력하세요">
+    <div class="area"></div>
+    <script>
+        const $message = document.querySelector('input[type=text]');
+        const $area = document.querySelector('.area');
+
+        // e.key -> 사용자가 누른 문자 자체
+        // e.code -> 물리적인 키 위치
+        
+        // keydown 이벤트 : 키를 누를 때 발생
+        $message.onkeydown = (e) => {
+            $area.insertAdjacentHTML('beforeend', " code=" + e.code + "<br>");
+        };
+
+				// keyup 이벤트 : 키에서 손을 뗄 때 발생
+        $message.onkeyup = (e) => {
+            $area.insertAdjacentHTML('beforeend', 'keyup key=' + e.key + ", code=" + e.code + "<br>");
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+    <!--
+        1. props(properties)
+          1) props는 리액트에서 컴포넌트 간에 데이터를 전달할 때 사용하는 객체입니다.
+          2) 주로 부모 컴포넌트가 자식 컴포넌트에게 데이터나 설정값을 넘겨줄 때 활용되며, 컴포넌트의 동작과 렌더링 결과를 동적으로 제어할 수 있습니다.
+          3) props 주요 특징
+            (1) 데이터 전달 통로
+              ① props는 상위(부모) 컴포넌트에서 하위(자식) 컴포넌트로 데이터를 전달하는 역할을 합니다. 
+              ② JSX에서 HTML 속성처럼 사용하며, 자식 컴포넌트에서는 함수의 매개변수(파라미터)로 전달받아 사용할 수 있습니다.
+            (2) 읽기 전용(불변성)
+              ① props는 컴포넌트 내부에서 변경할 수 없는 읽기 전용 속성입니다.(immutable)
+              ② 자식 컴포넌트는 props의 값을 직접 수정할 수 없으며, 오직 부모 컴포넌트에서만 값을 바꿀 수 있습니다. 이로 인해 데이터 흐름이 예측 가능해집니다.
+              ③ 컴포넌트로 전달된 props의 값을 수정할 수 없으므로 함수형 컴포넌트의 경우 순수 함수(전달된 인자 값을 수정하지 않아 동일한 입력에 대해서는 동일한 출력을 가지는 함수)의 특성을 가지게 됩니다.
+            (3) 컴포넌트 재사용성 향상
+              ① props를 활용하면 하나의 컴포넌트를 다양한 데이터와 설정으로 재사용할 수 있습니다. 
+              ② 예를 들어, 같은 버튼 컴포넌트에 다른 텍스트, 색상, 동작 등을 props로 넘겨 다양하게 활용할 수 있습니다.
+            (4) 동적 렌더링과 자동 업데이트
+              ① 부모 컴포넌트에서 전달한 props 값이 변경되면, 해당 props를 사용하는 자식 컴포넌트는 자동으로 리렌더링됩니다.
+              ② 이를 통해 동적인 UI 구현이 가능합니다.
+          4) 개념 이해
+            (1) 컴포넌트 : 붕어빵 틀
+            (2) 엘리먼트 : 붕어빵
+            (3) props    : 붕어빵 재료 (props는 컴포넌트(붕어빵 틀)에 전달되는 데이터(재료)로, 다양한 결과물을 만들어낼 수 있게 해줍니다.)
+
+
+        2. props 기본 사용법
+          1) 전달
+            (1) JSX에서 HTML 속성처럼 컴포넌트에 값을 전달합니다.
+            (2) 예시
+              <ChildComponent greeting="Hello, World!" />
+          2) 접근
+            (1) 함수형 컴포넌트에서는 매개변수로, 클래스형 컴포넌트에서는 this.props로 접근합니다.
+            (2) 예시
+              //----- ① 함수형 컴포넌트
+              function ChildComponent(props) {
+                return <h1>{props.greeting}</h1>;
+              }
+              //----- ② 클래스형 컴포넌트
+              class ChildComponent extends React.Component {
+                render() {
+                  return <h1>{this.props.greeting}</h1>;
+                }
+              }
+
+        3. props 추가 사용법
+          1) props 객체를 객체 구조 분해 할당으로 간결하게 사용할 수 있습니다.
+            예시)
+            function ChildComponent({ color, name }) {
+              return <div style={{ color }}>{ name }</div>;
+            }
+          2) defaultProps를 이용해 props가 전달되지 않았을 때 사용할 기본값을 설정할 수 있습니다.
+            예시)
+            ChildComponent.defaultProps = {
+              color: "green",
+              name: "이름 없음",
+            };
+          3) 컴포넌트 태그 사이에 들어가는 내용을 props.children으로 접근할 수 있습니다.
+            예시)
+            function ChildComponent({ children }) {
+              return <div>{ children }</div>;
+            }
+
+    -->
+
+    <div id="root1"></div>
+    <script type="text/babel">
+        
+        function App() {
+            return (
+                <>
+                    <h1>연락처 모음집</h1>
+                    { /*   동일한 UI 반복, 다만 표현되는 데이터는 다름
+                    <div style={{border: '1px solid gray', width: '200px', margin: '10px'}}>
+                        <div> 이름: 홍길동 </div>
+                        <div> 연락처: 010-1111-2222</div>
+                    </div>
+                    <div style={{border: '1px solid gray', width: '200px', margin: '10px'}}>
+                        <div> 이름: 김철수 </div>
+                        <div> 연락처: 010-1111-2222</div>
+                    </div>
+                    <div style={{border: '1px solid gray', width: '200px', margin: '10px'}}>
+                        <div> 이름: 이영희 </div>
+                        <div> 연락처: 010-1111-2222</div>
+                    </div>
+                    */ }
+                    <NameCard name="홍길동" phone="010-1111-2222"/>
+                    <NameCard name="김철수" phone="010-3333-4444"/>
+                    <NameCard name="이영희" phone="010-5555-6666"/>
+                    <NameCard name="김길동"/>
+                    <NameCard/>
+                </>
+            )
+        }
+
+        // 1) props 매개변수 설정
+        // const NameCard = (props) => {   // props === {name: "xxx" phone="010-0000-0000"}
+        //     console.log(props);
+        //     return (
+        //         <div style={{border: '1px solid lightgray', width: '230px', margin: '10px'}}>
+        //                 <div> 이름: {props.name} </div>
+        //                 <div> 연락처: {props.phone} </div>
+        //         </div>
+        //     )
+        // }
+
+
+        // 2) props 매개변수 설정 + 객체  구조 분해 할당
+        // const NameCard = (props) => {   
+
+        //     const {name, phone} = props;
+
+        //     console.log(props);
+        //     return (
+        //         <div style={{border: '1px solid lightgray', width: '230px', margin: '10px'}}>
+        //                 <div> 이름: {name} </div>
+        //                 <div> 연락처: {phone} </div>
+        //         </div>
+        //     )
+        // }
+
+
+        // 3) 매개변수 측에서 바로 객체 구조 분해 할당
+        // const NameCard = ({ name, phone }) => {   // const {name, phone} = {name: "xxx" phone="010-0000-0000"}
+
+        //     return (
+        //         <div style={{border: '1px solid lightgray', width: '230px', margin: '10px'}}>
+        //                 <div> 이름: {name} </div>
+        //                 <div> 연락처: {phone} </div>
+        //         </div>
+        //     )
+        // }
+
+
+        // 4) props 객체의 기본값 설정1 - defaultProps 속성 활용 (권장 X)
+        // const NameCard = ({ name, phone }) => {   // const {name, phone} = {name: "xxx" phone="010-0000-0000"}
+
+        //     return (
+        //         <div style={{border: '1px solid lightgray', width: '230px', margin: '10px'}}>
+        //                 <div> 이름: {name} </div>
+        //                 <div> 연락처: {phone} </div>
+        //         </div>
+        //     )
+        // }
+        // NameCard.defaultProps = {
+        //     name: "이름 없음",
+        //     phone: "연락처 없음"
+        // }
+
+
+        // 5) props 객체의 기본값 설정2 - default parameter(기본 매개변수) 활용
+        const NameCard = ({ name = "이름 없음", phone = "연락처 없음" }) => {
+
+            return (
+                <div style={{border: '1px solid lightgray', width: '230px', margin: '10px'}}>
+                        <div> 이름: {name} </div>
+                        <div> 연락처: {phone} </div>
+                </div>
+            )
+        }
+
+
+        ReactDOM.createRoot(document.getElementById('root1')).render(<App/>);
+    </script>
+
+    <hr>    
+  
+    <div id="root2"></div>
+    <script type="text/babel">
+
+        function App() {
+            return (
+                <>
+                    { /*
+                        children 개념
+                        1) 컴포넌트 태그 사이에 작성한 내용은 자동으로 props.children으로 전달된다.
+                        2) 이때 전달되는 값은 "텍스트", "HTML 태그(JSX)", "여러 요소" 등 다양할 수 있다.
+                    */ }
+                    
+                    {/* 텍스트 전달 (문자열) */}
+                    <GiftCard brand="신세계"> 3만원 </GiftCard>   {/*전달할 내용이 있어서 열고 닫아야함*/}
+                    
+                    {/* 태그 전달 (JSX 요소) */}
+                    <GiftCard brand="현대"><em> 5만원 </em></GiftCard>
+                </>
+            )
+        }
+
+        const GiftCard = ({brand, children}) => {   // {brand: xxx, children: xxx}
+            return (
+                <h3>{brand}백화점 - {children}상품권 </h3>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root2')).render(<App/>);
+
+    </script>
+
+    <hr>
+
+    <!--
+    4. props drilling
+          1) 여러 단계의 중간 컴포넌트를 거쳐 props를 전달하는 현상을 props drilling이라고 하며, 이로 인해 컴포넌트 구조가 복잡해질 수 있습니다.
+          2) 이를 해결하기 위해 Context API, Redux, Recoil 등의 상태 관리 도구를 사용하기도 합니다.
+    -->
+
+    <div id="root3"></div>
+    <script type="text/babel">
+        function App() {
+            return (
+                <div style={{border: '1px solid black', padding: '10px'}}>
+                    <h1>App Component</h1>
+                    <FirstComp data="data by app"/>
+                </div>
+            );
+        }
+
+        const FirstComp = ({data}) => {
+            return (
+                <div style={{border: '1px solid orange', padding: '10px'}}>
+                    <h2>First Component</h2>
+                    <SecondComp data={data}/>
+                </div>
+            )
+        }
+
+        const SecondComp = ({data}) => {
+            return (
+                <div style={{border: '1px solid olive', padding: '10px'}}>
+                    <h2>Second Component</h2>
+                    <ThirdComp data={data}/>
+                </div>
+            )
+        }
+
+        const ThirdComp = ({data}) => {
+            return (
+                <div style={{border: '1px solid purple', padding: '10px'}}>
+                    <h2>Third Component</h2>
+                    <em>최상위 컴포넌트로부터 전달받은 데이터: {data}</em>
+                </div>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root3')).render(<App/>);
+    </script> 
+
+    <hr>
+
+  <!--
+    1. key props
+      1) 리스트로 렌더링되는 자식 컴포넌트 각각을 고유하게 식별하기 위한 특별한 props입니다.
+      2) 이는 리액트가 효율적으로 변경 사항을 추적하고 업데이트하는 데 도움을 줍니다.
+      3) React는 렌더링 최적화를 위해 이전과 새 요소를 비교(diffing)하는데, 
+         key가 없으면 순서만 보고 비교해서 비효율적이거나 잘못된 업데이트가 일어날 수 있습니다.
+      4) 고유한 key가 존재하는 경우 어떤 요소에 변화가 일어났는지 빠르게 감지할 수 있으며 최소한의 DOM 렌더링을 통해 렌더링 성능을 향상시킬 수 있습니다.
+      5) key로 사용하기 적절한 값은 DB에서 조회한 데이터의 PK값입니다.
+  -->
+
+    <div id="root4"></div>
+    <script type="text/babel">
+        
+        function App() {
+            const names = ["홍길동", "이순신", "강감찬"];
+
+            return (
+                <>
+                    <NameListComp items={names}/>
+                </>
+            );
+        }
+
+        const NameListComp = ({items}) => {
+            console.log('items', items);
+            return (
+                <ul>
+                    { items.map((item, index) => <li key={index}>{item}</li>) }
+                </ul>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root4')).render(<App/>);
+
+    </script>
+
+    <hr>
+  
+    <div id="root5"></div>
+    <script type="text/babel">
+
+        function App() {
+            const cars = [
+                {
+                    carNo: '123가 1234',
+                    model: 'volvo'
+                },
+                {
+                    carNo: '456나 0101',
+                    model: 'kia'
+                },
+                {
+                    carNo: '789다 6543',
+                    model: 'benz'
+                }
+            ];
+
+            return (
+                <>
+                    <CarListComp cars={cars}/>
+                </>
+            )
+        }
+
+        const CarListComp = ({cars}) => {
+            // cars === [{}, {}, {}]
+            return (
+                <div>
+                    {cars.map((car) => <CarItemComp key={car.carNo} car={car}/>)}
+                </div>
+            )
+        }
+
+        const CarItemComp = ({car}) => {
+            return (
+                <div>
+                    <h4>차번호: {car.carNo}</h4>
+                    <h4>브랜드: {car.model}</h4>
+                </div>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root5')).render(<App/>);
+
+    </script>
+
+</body>
+</html>
